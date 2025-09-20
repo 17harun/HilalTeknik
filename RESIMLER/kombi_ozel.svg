@@ -66,16 +66,87 @@
 <rect x="330" y="180" width="540" height="100" rx="6" fill="#F0F0F0" opacity="0.9"/>
 <rect x="340" y="190" width="520" height="80" rx="4" fill="#F8F8F8" opacity="0.95"/>
 
-<!-- Kombi Sol Taraf - Ana Ekran -->
-<rect x="350" y="210" width="300" height="50" rx="4" fill="url(#screenGradient)" opacity="0.98"/>
-<rect x="350" y="215" width="300" height="40" rx="3" fill="#0080FF" opacity="0.9"/>
-<text x="500" y="240" text-anchor="middle" fill="#FFFFFF" font-size="20" font-weight="bold" opacity="1" filter="url(#textGlow)">ÖZEL YETKİLİ KOMBİ SERVİSİ</text>
+<!-- Kombi Sol Taraf - LCD Ekran (Küçültülmüş) -->
+<rect x="370" y="200" width="200" height="30" rx="3" fill="#000000" opacity="0.95"/>
+<rect x="372" y="202" width="196" height="26" rx="2" fill="#001122" opacity="0.98"/>
+<rect x="374" y="204" width="192" height="22" rx="1" fill="#000000" opacity="0.9"/>
 
-<!-- Kombi Sağ Taraf - Sıcaklık Göstergesi -->
-<circle cx="750" cy="235" r="35" fill="url(#tempGradient)" opacity="0.95"/>
-<circle cx="750" cy="235" r="30" fill="#FF4500" opacity="0.98"/>
-<text x="750" y="225" text-anchor="middle" fill="white" font-size="20" font-weight="bold" opacity="0.98">32°</text>
-<text x="750" y="240" text-anchor="middle" fill="white" font-size="12" opacity="0.9">C</text>
+<!-- LCD Parlaklık Efekti - Sol Ekran -->
+<ellipse cx="385" cy="210" rx="10" ry="4" fill="#003366" opacity="0.4"/>
+
+<!-- HİLAL TEKNİK Yazısı - LCD Tarzı -->
+<text x="470" y="218" text-anchor="middle" fill="#00FFFF" font-size="12" font-weight="bold" opacity="1" filter="url(#textGlow)">HİLAL TEKNİK</text>
+
+<!-- Kombi Kontrol Butonları - Ekranın Altında -->
+<!-- Sol Buton Grubu -->
+<circle cx="390" cy="245" r="12" fill="#E0E0E0" opacity="0.9"/>
+<circle cx="390" cy="245" r="10" fill="#F5F5F5" opacity="0.95"/>
+<circle cx="390" cy="243" r="8" fill="#FFFFFF" opacity="0.9"/>
+<text x="390" y="247" text-anchor="middle" fill="#333333" font-size="7" font-weight="bold">MODE</text>
+
+<circle cx="420" cy="245" r="12" fill="#E0E0E0" opacity="0.9"/>
+<circle cx="420" cy="245" r="10" fill="#F5F5F5" opacity="0.95"/>
+<circle cx="420" cy="243" r="8" fill="#FFFFFF" opacity="0.9"/>
+<text x="420" y="247" text-anchor="middle" fill="#333333" font-size="9" font-weight="bold">+</text>
+
+<circle cx="450" cy="245" r="12" fill="#E0E0E0" opacity="0.9"/>
+<circle cx="450" cy="245" r="10" fill="#F5F5F5" opacity="0.95"/>
+<circle cx="450" cy="243" r="8" fill="#FFFFFF" opacity="0.9"/>
+<text x="450" y="247" text-anchor="middle" fill="#333333" font-size="9" font-weight="bold">-</text>
+
+<!-- Sağ Buton Grubu -->
+<circle cx="490" cy="245" r="12" fill="#E0E0E0" opacity="0.9"/>
+<circle cx="490" cy="245" r="10" fill="#F5F5F5" opacity="0.95"/>
+<circle cx="490" cy="243" r="8" fill="#FFFFFF" opacity="0.9"/>
+<text x="490" y="247" text-anchor="middle" fill="#333333" font-size="7" font-weight="bold">MENU</text>
+
+<circle cx="520" cy="245" r="12" fill="#E0E0E0" opacity="0.9"/>
+<circle cx="520" cy="245" r="10" fill="#F5F5F5" opacity="0.95"/>
+<circle cx="520" cy="243" r="8" fill="#FFFFFF" opacity="0.9"/>
+<circle cx="520" cy="243" r="4" fill="#00FF00" opacity="0.8"/>
+
+<!-- Reset Düğmesi -->
+<rect x="550" y="235" width="18" height="18" rx="3" fill="#CC0000" opacity="0.9"/>
+<rect x="552" y="237" width="14" height="14" rx="2" fill="#FF0000" opacity="0.95"/>
+<text x="559" y="246" text-anchor="middle" fill="#FFFFFF" font-size="5" font-weight="bold">RESET</text>
+
+<!-- Kombi Sağ Taraf - Çevirmeli Sıcaklık Düğmesi -->
+<!-- Düğme Gölgesi -->
+<circle cx="752" cy="237" r="35" fill="#AAAAAA" opacity="0.4"/>
+
+<!-- Ana Düğme Gövdesi - 3D Efekt -->
+<circle cx="750" cy="235" r="35" fill="#E8E8E8" opacity="0.95"/>
+<circle cx="750" cy="235" r="33" fill="#F0F0F0" opacity="0.98"/>
+<circle cx="750" cy="235" r="31" fill="#F8F8F8" opacity="1"/>
+
+<!-- Düğme Kenar Çizgileri (Çevirmeli Görünüm) -->
+<g stroke="#CCCCCC" stroke-width="0.8" opacity="0.8">
+  <line x1="750" y1="204" x2="750" y2="209" transform="rotate(0 750 235)"/>
+  <line x1="750" y1="204" x2="750" y2="209" transform="rotate(45 750 235)"/>
+  <line x1="750" y1="204" x2="750" y2="209" transform="rotate(90 750 235)"/>
+  <line x1="750" y1="204" x2="750" y2="209" transform="rotate(135 750 235)"/>
+  <line x1="750" y1="204" x2="750" y2="209" transform="rotate(180 750 235)"/>
+  <line x1="750" y1="204" x2="750" y2="209" transform="rotate(225 750 235)"/>
+  <line x1="750" y1="204" x2="750" y2="209" transform="rotate(270 750 235)"/>
+  <line x1="750" y1="204" x2="750" y2="209" transform="rotate(315 750 235)"/>
+</g>
+
+<!-- Düğme İç Yüzeyi - LCD Ekran -->
+<circle cx="750" cy="235" r="25" fill="#000000" opacity="0.95"/>
+<circle cx="750" cy="235" r="23" fill="#001122" opacity="0.98"/>
+<circle cx="750" cy="235" r="21" fill="#000000" opacity="0.9"/>
+
+<!-- LCD Parlaklık Efekti -->
+<ellipse cx="745" cy="230" rx="8" ry="4" fill="#003366" opacity="0.4"/>
+
+<!-- Sıcaklık Değeri - LCD Tarzı -->
+<text x="750" y="240" text-anchor="middle" fill="#00FFFF" font-size="16" font-weight="bold" opacity="1" filter="url(#textGlow)">44°</text>
+
+<!-- Düğme Çerçevesi - Premium Tasarım -->
+<circle cx="750" cy="235" r="36" fill="none" stroke="#C8C8C8" stroke-width="1.5" opacity="0.9"/>
+<circle cx="750" cy="235" r="35" fill="none" stroke="#E8E8E8" stroke-width="1" opacity="0.95"/>
+<circle cx="750" cy="235" r="25" fill="none" stroke="#F5F5F5" stroke-width="0.5" opacity="0.7"/>
+
 
 <!-- Kombi Orta Panel - Kontrol Butonları -->
 <rect x="330" y="300" width="540" height="80" rx="6" fill="#F5F5F5" opacity="0.9"/>
