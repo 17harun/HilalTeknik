@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /hakkimizda.html
+Allow: /galeri.html
+Allow: /iletisim.html
+Allow: /style.css
+Allow: /RESIMLER/
+
+# Güvenlik için gizli dosyaları engelle
+Disallow: /.htaccess
+Disallow: /.htpasswd
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /logs/
+Disallow: /admin/
+Disallow: /includes/
+Disallow: /config/
+Disallow: /backup/
+Disallow: /*.sql
+Disallow: /*.log
+Disallow: /*.bak
+Disallow: /*.old
+Disallow: /*.tmp
+
+# Sitemap
+Sitemap: https://www.hilalsihhitesisat.com/sitemap.xml
+
+# Crawl-delay (sunucu yükünü azaltmak için)
+Crawl-delay: 1
+

@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+<defs>
+<linearGradient id="wallGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" style="stop-color:#E8E8E8;stop-opacity:0.8"/>
+<stop offset="50%" style="stop-color:#D0D0D0;stop-opacity:0.7"/>
+<stop offset="100%" style="stop-color:#B8B8B8;stop-opacity:0.8"/>
+</linearGradient>
+<linearGradient id="deviceGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" style="stop-color:#F8F8F8;stop-opacity:0.95"/>
+<stop offset="30%" style="stop-color:#E8E8E8;stop-opacity:0.9"/>
+<stop offset="70%" style="stop-color:#D8D8D8;stop-opacity:0.9"/>
+<stop offset="100%" style="stop-color:#C8C8C8;stop-opacity:0.95"/>
+</linearGradient>
+<linearGradient id="screenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" style="stop-color:#000000;stop-opacity:0.98"/>
+<stop offset="50%" style="stop-color:#111111;stop-opacity:0.9"/>
+<stop offset="100%" style="stop-color:#000000;stop-opacity:0.98"/>
+</linearGradient>
+<linearGradient id="tempGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" style="stop-color:#FF4500;stop-opacity:0.95"/>
+<stop offset="50%" style="stop-color:#FF6347;stop-opacity:0.9"/>
+<stop offset="100%" style="stop-color:#FF4500;stop-opacity:0.95"/>
+</linearGradient>
+<filter id="glow">
+<feGaussianBlur stdDeviation="0.5" result="coloredBlur"/>
+<feMerge>
+<feMergeNode in="coloredBlur"/>
+<feMergeNode in="SourceGraphic"/>
+</feMerge>
+</filter>
+<filter id="shadow">
+<feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.5"/>
+</filter>
+<filter id="textGlow">
+<feFlood flood-color="#ADD8E6" flood-opacity="0.7" result="flood"/>
+<feComposite in="flood" in2="SourceGraphic" operator="in" result="composite"/>
+<feGaussianBlur in="composite" stdDeviation="1" result="blur"/>
+<feMerge>
+<feMergeNode in="SourceGraphic"/>
+<feMergeNode in="blur"/>
+</feMerge>
+</filter>
+</defs>
+
+<rect width="1200" height="800" fill="#000"/>
+
+<g filter="url(#glow)">
+<!-- Duvar Arka Plan -->
+<rect x="0" y="0" width="1200" height="800" fill="url(#wallGradient)" opacity="0.3"/>
+
+<!-- Duvar Çizgileri -->
+<line x1="0" y1="200" x2="1200" y2="200" stroke="#C0C0C0" stroke-width="2" opacity="0.4"/>
+<line x1="0" y1="400" x2="1200" y2="400" stroke="#C0C0C0" stroke-width="2" opacity="0.4"/>
+<line x1="0" y1="600" x2="1200" y2="600" stroke="#C0C0C0" stroke-width="2" opacity="0.4"/>
+<line x1="200" y1="0" x2="200" y2="800" stroke="#C0C0C0" stroke-width="2" opacity="0.4"/>
+<line x1="400" y1="0" x2="400" y2="800" stroke="#C0C0C0" stroke-width="2" opacity="0.4"/>
+<line x1="600" y1="0" x2="600" y2="800" stroke="#C0C0C0" stroke-width="2" opacity="0.4"/>
+<line x1="800" y1="0" x2="800" y2="800" stroke="#C0C0C0" stroke-width="2" opacity="0.4"/>
+<line x1="1000" y1="0" x2="1000" y2="800" stroke="#C0C0C0" stroke-width="2" opacity="0.4"/>
+
+<!-- Kombi Ana Gövde - Duvar Montajlı -->
+<rect x="300" y="150" width="600" height="450" rx="8" fill="url(#deviceGradient)" opacity="0.8" filter="url(#shadow)"/>
+<rect x="310" y="160" width="580" height="430" rx="6" fill="#FFFFFF" opacity="0.9"/>
+
+<!-- Kombi Üst Panel - Kontrol Merkezi -->
+<rect x="330" y="180" width="540" height="100" rx="6" fill="#F0F0F0" opacity="0.9"/>
+<rect x="340" y="190" width="520" height="80" rx="4" fill="#F8F8F8" opacity="0.95"/>
+
+<!-- Kombi Sol Taraf - Ana Ekran -->
+<rect x="350" y="210" width="300" height="50" rx="4" fill="url(#screenGradient)" opacity="0.98"/>
+<rect x="350" y="215" width="300" height="40" rx="3" fill="#0080FF" opacity="0.9"/>
+<text x="500" y="240" text-anchor="middle" fill="#FFFFFF" font-size="20" font-weight="bold" opacity="1" filter="url(#textGlow)">ÖZEL KOMBİ YETKİLİ SERVİSİ</text>
+
+<!-- Kombi Sağ Taraf - Sıcaklık Göstergesi -->
+<circle cx="750" cy="235" r="35" fill="url(#tempGradient)" opacity="0.95"/>
+<circle cx="750" cy="235" r="30" fill="#FF4500" opacity="0.98"/>
+<text x="750" y="225" text-anchor="middle" fill="white" font-size="20" font-weight="bold" opacity="0.98">32°</text>
+<text x="750" y="240" text-anchor="middle" fill="white" font-size="12" opacity="0.9">C</text>
+
+<!-- Kombi Orta Panel - Kontrol Butonları -->
+<rect x="330" y="300" width="540" height="80" rx="6" fill="#F5F5F5" opacity="0.9"/>
+<rect x="340" y="310" width="520" height="60" rx="4" fill="#F8F8F8" opacity="0.95"/>
+
+<!-- Ana Kontrol Butonları - Gerçekçi -->
+<rect x="360" y="320" width="60" height="35" rx="4" fill="#FF4500" opacity="0.9"/>
+<rect x="440" y="320" width="60" height="35" rx="4" fill="#FF6347" opacity="0.9"/>
+<rect x="520" y="320" width="60" height="35" rx="4" fill="#FF4500" opacity="0.9"/>
+<rect x="600" y="320" width="60" height="35" rx="4" fill="#FF6347" opacity="0.9"/>
+<rect x="680" y="320" width="60" height="35" rx="4" fill="#FF4500" opacity="0.9"/>
+<rect x="760" y="320" width="60" height="35" rx="4" fill="#FF6347" opacity="0.9"/>
+
+<!-- Kombi Alt Panel - Isıtıcı Sistemi -->
+<rect x="330" y="400" width="540" height="120" rx="6" fill="#E8E8E8" opacity="0.7"/>
+<rect x="340" y="410" width="520" height="100" rx="4" fill="#F0F0F0" opacity="0.8"/>
+
+<!-- Isıtıcı Ana Kanal -->
+<rect x="360" y="430" width="480" height="70" rx="4" fill="#F8F8F8" opacity="0.7"/>
+
+<!-- Isıtıcı Kanalları - Gerçekçi Boyutlar -->
+<rect x="370" y="440" width="30" height="50" rx="3" fill="#FF4500" opacity="0.8"/>
+<rect x="410" y="440" width="30" height="50" rx="3" fill="#FF6347" opacity="0.8"/>
+<rect x="450" y="440" width="30" height="50" rx="3" fill="#FF4500" opacity="0.8"/>
+<rect x="490" y="440" width="30" height="50" rx="3" fill="#FF6347" opacity="0.8"/>
+<rect x="530" y="440" width="30" height="50" rx="3" fill="#FF4500" opacity="0.8"/>
+<rect x="610" y="440" width="30" height="50" rx="3" fill="#FF6347" opacity="0.8"/>
+<rect x="650" y="440" width="30" height="50" rx="3" fill="#FF4500" opacity="0.8"/>
+<rect x="690" y="440" width="30" height="50" rx="3" fill="#FF6347" opacity="0.8"/>
+<rect x="730" y="440" width="30" height="50" rx="3" fill="#FF4500" opacity="0.8"/>
+<rect x="770" y="440" width="30" height="50" rx="3" fill="#FF6347" opacity="0.8"/>
+
+<!-- Kombi Sol Bağlantı - Su Girişi (Soğuk) -->
+<rect x="250" y="320" width="50" height="30" rx="15" fill="#0080FF" opacity="0.8"/>
+<rect x="240" y="325" width="10" height="20" rx="5" fill="#0080FF" opacity="0.9"/>
+<rect x="230" y="330" width="10" height="10" rx="5" fill="#0080FF" opacity="0.8"/>
+
+<!-- Kombi Sağ Bağlantı - Su Çıkışı (Sıcak) -->
+<rect x="900" y="320" width="50" height="30" rx="15" fill="#FF4500" opacity="0.8"/>
+<rect x="960" y="325" width="10" height="20" rx="5" fill="#FF4500" opacity="0.9"/>
+<rect x="970" y="330" width="10" height="10" rx="5" fill="#FF4500" opacity="0.8"/>
+
+<!-- Kombi Alt Bağlantı - Gaz -->
+<rect x="400" y="650" width="400" height="25" rx="12" fill="#FFD700" opacity="0.8"/>
+<rect x="390" y="655" width="10" height="15" rx="5" fill="#FFD700" opacity="0.9"/>
+<rect x="810" y="655" width="10" height="15" rx="5" fill="#FFD700" opacity="0.9"/>
+
+<!-- Kombi Üst Bağlantı - Hava Çıkışı -->
+<rect x="450" y="120" width="300" height="20" rx="10" fill="#C0C0C0" opacity="0.7"/>
+<rect x="440" y="125" width="10" height="10" rx="5" fill="#C0C0C0" opacity="0.8"/>
+<rect x="750" y="125" width="10" height="10" rx="5" fill="#C0C0C0" opacity="0.8"/>
+
+<!-- Duvar Montaj Vidaları -->
+<circle cx="320" cy="170" r="8" fill="#A0A0A0" opacity="0.8"/>
+<circle cx="880" cy="170" r="8" fill="#A0A0A0" opacity="0.8"/>
+<circle cx="320" cy="580" r="8" fill="#A0A0A0" opacity="0.8"/>
+<circle cx="880" cy="580" r="8" fill="#A0A0A0" opacity="0.8"/>
+
+<!-- Isı Dalgaları - Gerçekçi -->
+<path d="M 100 100 Q 200 60 300 100 T 500 100 T 700 100 T 900 100 T 1100 100" stroke="#FF4500" stroke-width="6" fill="none" opacity="0.6"/>
+<path d="M 120 80 Q 220 40 320 80 T 520 80 T 720 80 T 920 80 T 1120 80" stroke="#FF6347" stroke-width="5" fill="none" opacity="0.5"/>
+
+<!-- Isı Dalgaları - Alttan -->
+<path d="M 100 700 Q 200 660 300 700 T 500 700 T 700 700 T 900 700 T 1100 700" stroke="#FF4500" stroke-width="6" fill="none" opacity="0.6"/>
+<path d="M 120 720 Q 220 680 320 720 T 520 720 T 720 720 T 920 720 T 1120 720" stroke="#FF6347" stroke-width="5" fill="none" opacity="0.5"/>
+
+<!-- Enerji Parçacıkları - Gerçekçi -->
+<circle cx="80" cy="120" r="4" fill="#FF4500" opacity="0.8"/>
+<circle cx="1120" cy="680" r="4" fill="#FF6347" opacity="0.8"/>
+<circle cx="100" cy="750" r="3" fill="#FF4500" opacity="0.7"/>
+<circle cx="1100" cy="50" r="3" fill="#FF6347" opacity="0.7"/>
+<circle cx="60" cy="400" r="3.5" fill="#FF4500" opacity="0.6"/>
+<circle cx="1140" cy="400" r="3.5" fill="#FF6347" opacity="0.6"/>
+</g>
+</svg>
+
