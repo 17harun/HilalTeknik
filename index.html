@@ -1,40 +1,125 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="robots" content="index, follow">
-    
+    <!-- Google Analytics (GA4) - Non-blocking Resilient Loader -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-F9GZ1TCNVZ');
+
+        (function () {
+            var gaLoaded = false;
+            function loadGA() {
+                if (gaLoaded) return;
+                gaLoaded = true;
+                var s = document.createElement('script');
+                s.async = true;
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-F9GZ1TCNVZ';
+                document.head.appendChild(s);
+            }
+
+            // 1. Idle Callback with cross-browser fallback (no interaction required)
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(loadGA, { timeout: 7000 });
+            } else {
+                setTimeout(loadGA, 6500);
+            }
+
+            // 2. Early user interaction triggers immediate load
+            var events = ['scroll', 'pointerdown', 'touchstart', 'keydown'];
+            function onInteraction() {
+                loadGA();
+                events.forEach(function (e) {
+                    window.removeEventListener(e, onInteraction, { passive: true });
+                });
+            }
+            events.forEach(function (e) {
+                window.addEventListener(e, onInteraction, { passive: true, once: true });
+            });
+
+            // 3. Fallback on early page leave (bounces) so zero hits are lost
+            window.addEventListener('visibilitychange', function () {
+                if (document.visibilityState === 'hidden') loadGA();
+            }, { once: true });
+            window.addEventListener('pagehide', loadGA, { once: true });
+        })();
+    </script>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="RESIMLER/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="RESIMLER/apple-touch-icon.png">
+
     <!-- Güvenlik Başlıkları -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com;">
-    <meta name="description" content="Malatya kombi servisi Hilal Teknik - Osman Tari. Vaillant, Bosch, Buderus, Viessmann, Ariston, Baxi, Demirdöküm, Protherm, Ferroli kombi montaj, bakım, onarım. 7/24 servis.">
-    <meta name="keywords" content="malatya kombi servisi, hilal teknik, osman tari, vaillant kombi servisi, bosch kombi servisi, buderus kombi servisi, viessmann kombi servisi, ariston kombi servisi, baxi kombi servisi, demirdöküm kombi servisi, protherm kombi servisi, ferroli kombi servisi, kombi montaj malatya, kombi bakım malatya, kombi onarım malatya, kombi yedek parça malatya, 7/24 kombi servisi, malatya ısıtma sistemleri, kombi tamiri, kombi arıza servisi">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://fonts.googleapis.com https://cdnjs.cloudflare.com;">
+    <meta name="description"
+        content="Malatya kombi servisi Hilal Teknik - Osman Tari. Vaillant, Bosch, Buderus, Viessmann, Ariston, Baxi, Demirdöküm, Protherm, Ferroli kombi montaj, bakım, onarım. 7/24 servis.">
+    <meta name="keywords"
+        content="malatya kombi servisi, hilal teknik, osman tari, vaillant kombi servisi, bosch kombi servisi, buderus kombi servisi, viessmann kombi servisi, ariston kombi servisi, baxi kombi servisi, demirdöküm kombi servisi, protherm kombi servisi, ferroli kombi servisi, kombi montaj malatya, kombi bakım malatya, kombi onarım malatya, kombi yedek parça malatya, 7/24 kombi servisi, malatya ısıtma sistemleri, kombi tamiri, kombi arıza servisi">
+    <link rel="canonical" href="https://hilalteknik.com/">
     <meta property="og:locale" content="tr_TR">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Malatya Kombi Servisi | Hilal Teknik - Osman Tari">
-    <meta property="og:description" content="Vaillant, Bosch, Buderus, Viessmann, Ariston kombi servisi Malatya. Hilal Teknik - Osman Tari ile güvenilir hizmet. 7/24 montaj, bakım, onarım.">
-    <meta property="og:image" content="RESIMLER/resim1.jpeg">
-    <meta property="og:url" content="https://www.hilalsihhitesisat.com">
+    <meta property="og:description"
+        content="Vaillant, Bosch, Buderus, Viessmann, Ariston kombi servisi Malatya. Hilal Teknik - Osman Tari ile güvenilir hizmet. 7/24 montaj, bakım, onarım.">
+    <meta property="og:image" content="https://hilalteknik.com/RESIMLER/sosyal-paylasim-logo.png">
+    <meta property="og:url" content="https://hilalteknik.com/">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Malatya Kombi Servisi | Hilal Teknik - Osman Tari">
-    <meta name="twitter:description" content="Vaillant, Bosch, Buderus, Viessmann, Ariston kombi servisi Malatya. Hilal Teknik ile güvenilir hizmet. 7/24 montaj, bakım, onarım.">
+    <meta name="twitter:description"
+        content="Vaillant, Bosch, Buderus, Viessmann, Ariston kombi servisi Malatya. Hilal Teknik ile güvenilir hizmet. 7/24 montaj, bakım, onarım.">
+    <meta name="twitter:image" content="https://hilalteknik.com/RESIMLER/sosyal-paylasim-logo.png">
     <title>Malatya Kombi Servisi | Hilal Teknik - Osman Tari | Vaillant, Bosch, Buderus Servis</title>
-    <link rel="preload" as="image" href="RESIMLER/resim1.jpeg">
+
+    <!-- ==================== LCP & KRİTİK GÖRSEL ÖN YÜKLEME ==================== -->
+    <link rel="preload" as="image" href="RESIMLER/hero-petek-temizligi-600w.avif" type="image/avif" fetchpriority="high" media="(max-width: 768px)">
+    <link rel="preload" as="image" href="RESIMLER/hero-petek-temizligi.avif" type="image/avif" fetchpriority="high" media="(min-width: 769px)">
+    <link rel="preload" as="image" href="RESIMLER/logo-hilal-amblem-sm.avif" type="image/avif">
+    <link rel="preload" as="font" type="font/woff2"
+        href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2" crossorigin>
+
+    <!-- ==================== ERKEN BAĞLANTI (PRECONNECT) ==================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Tema Başlatıcı Script (FOUC Önleyici - Senkron Kalmalı) -->
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('hilal_theme');
+                document.documentElement.setAttribute('data-theme', (t === 'light' || t === 'dark') ? t : 'dark');
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+
+    <!-- Google Fonts Inter: Non-blocking -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    </noscript>
+
+    <!-- Yerel İkon Paketi (CDN bağımlılığı ve render-blocking kaldırıldı) -->
+    <link rel="stylesheet" href="icons.min.css?v=20261026_opt4">
+
+    <!-- Ana Stil Dosyası -->
+    <link rel="stylesheet" href="style.min.css?v=20261026_opt5">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "HVACBusiness",
-              "name": "Hilal Teknik",
+      "name": "Hilal Teknik",
+      "url": "https://hilalteknik.com/",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Malatya",
@@ -43,310 +128,458 @@
       "telephone": "+90 537 607 48 17",
       "email": "info@hilalteknik.com",
       "areaServed": "Malatya",
-      "image": "RESIMLER/resim1.jpeg",
+      "image": "RESIMLER/sosyal-paylasim-logo.png",
       "priceRange": "₺₺",
       "openingHours": "Mo-Su 00:00-23:59",
       "sameAs": [
         "https://www.facebook.com/hilal.teknik.tesisat.malatya",
-        "https://www.instagram.com/osman_tari",
+        "https://www.instagram.com/hilal_teknik_malatya",
         "https://wa.me/905376074817"
       ]
     }
     </script>
 </head>
+
 <body>
-    <!-- ==================== HEADER / NAVBAR ==================== -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <div class="logo-emblem">
-                    <!-- Dönen halka -->
-                    <div class="rotating-ring"></div>
-                    
-                    <!-- Küçük kayalar -->
-                    <div class="space-rocks">
-                        <div class="rock rock-1"></div>
-                        <div class="rock rock-2"></div>
-                        <div class="rock rock-3"></div>
-                        <div class="rock rock-4"></div>
-                        <div class="rock rock-5"></div>
-                        <div class="rock rock-6"></div>
+    <!-- ==================== FAREYE DUYARLI PREMİUM AMBİENT HİLAL ARKA PLANI ==================== -->
+    <div class="ambient-interactive-bg" id="ambientBg" aria-hidden="true">
+        <div class="ambient-bg-art"></div>
+        <div class="ambient-bg-glow"></div>
+    </div>
+
+    <!-- ==================== SİTE HEADER & NAVİGASYON (YÜZEN BUZLU CAM KAPSÜL) ==================== -->
+    <header class="site-header" id="siteHeader">
+        <div class="header-container">
+            <div class="nav-cluster nav-cluster--left">
+                <a href="index.html" class="logo" aria-label="HİLAL Teknik - Anasayfa">
+                    <div class="logo-emblem">
+                        <picture class="logo-emblem-picture">
+                            <source srcset="./RESIMLER/logo-hilal-amblem-sm.avif" type="image/avif">
+                            <source srcset="./RESIMLER/logo-hilal-amblem-sm.webp" type="image/webp">
+                            <img src="./RESIMLER/logo-hilal-amblem.png" alt="" aria-hidden="true" class="emblem-img"
+                                width="44" height="44" decoding="async">
+                        </picture>
                     </div>
-                    
-                    <!-- Ana amblem -->
-                    <div class="emblem-circle">
-                        <div class="emblem-text">HLL</div>
-                        <div class="emblem-arc"></div>
-                        <!-- Parçalanma efektleri -->
-                        <div class="fragments">
-                            <div class="fragment fragment-1"></div>
-                            <div class="fragment fragment-2"></div>
-                            <div class="fragment fragment-3"></div>
-                            <div class="fragment fragment-4"></div>
-                        </div>
+                    <div class="logo-brand">
+                        <span class="brand-title">HİLAL <strong>Teknik</strong></span>
                     </div>
-                </div>
-                <h1>HİLAL <span>Teknik</span></h1>
+                </a>
             </div>
-            <nav>
-                <!-- Sabit navigasyon -->
-                <div class="nav-items">
-                    <a href="index.html" class="nav-item" data-page="index">ANASAYFA</a>
-                    <a href="hakkimizda.html" class="nav-item" data-page="hakkimizda">HAKKIMIZDA</a>
-                    <a href="galeri.html" class="nav-item" data-page="galeri">GALERİ</a>
-                    <a href="iletisim.html" class="nav-item nav-item--large" data-page="iletisim">İLETİŞİM</a>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menüyü Aç/Kapat">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <div class="nav-cluster nav-cluster--right">
+                <nav class="desktop-nav" id="mainNav" aria-label="Ana Menü">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link active" data-page="index">ANASAYFA</a></li>
+                        <li><a href="hakkimizda.html" class="nav-link" data-page="hakkimizda">HAKKIMIZDA</a></li>
+                        <li><a href="hizmetlerimiz.html" class="nav-link" data-page="hizmetlerimiz">HİZMETLERİMİZ</a>
+                        </li>
+                        <li><a href="galeri.html" class="nav-link" data-page="galeri">GALERİ</a></li>
+                        <li><a href="iletisim.html" class="nav-link" data-page="iletisim">İLETİŞİM</a></li>
+                    </ul>
+                </nav>
+                <div class="nav-contact-actions" role="group" aria-label="Hızlı İletişim">
+                    <a href="tel:05376074817" class="nav-action-btn nav-action-btn--phone" aria-label="Telefonla ara"
+                        title="Hemen Arayın: 0537 607 48 17">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path
+                                d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.02l-2.21 2.2z" />
+                        </svg>
+                    </a>
+                    <a href="https://wa.me/905376074817" class="nav-action-btn nav-action-btn--whatsapp" target="_blank"
+                        rel="noopener noreferrer" aria-label="WhatsApp üzerinden iletişim kur"
+                        title="WhatsApp Canlı Destek">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path
+                                d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm5.79 14.16c-.24.68-1.39 1.3-1.92 1.38-.49.08-1.12.11-3.62-.91-3.21-1.31-5.26-4.57-5.42-4.78-.16-.21-1.3-1.73-1.3-3.3 0-1.57.82-2.35 1.11-2.67.29-.32.63-.4.84-.4.21 0 .42 0 .61.01.2.01.47-.08.73.55.27.64.92 2.24 1 2.41.08.16.13.35.03.56-.11.21-.16.35-.32.53-.16.19-.34.42-.48.56-.16.16-.33.33-.14.65.19.32.84 1.38 1.8 2.24 1.24 1.1 2.29 1.44 2.61 1.6.32.16.51.13.7-.08.19-.21.82-.95 1.04-1.28.21-.32.42-.27.71-.16.29.11 1.84.87 2.16 1.03.32.16.53.24.61.37.08.13.08.79-.16 1.47z" />
+                        </svg>
+                    </a>
                 </div>
-            </nav>
+            </div>
         </div>
     </header>
-
-    <!-- ==================== CONTACT ACTION BAR ==================== -->
-    <section class="contact-action-bar">
-        <div class="container">
-            <div class="contact-actions">
-                <a href="tel:05376074817" class="action-btn action-btn--phone">
-                    <i class="fas fa-phone"></i>
-                    <span>Telefon</span>
-                </a>
-                <a href="https://wa.me/905376074817" class="action-btn action-btn--whatsapp">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>WhatsApp</span>
-                </a>
-            </div>
-        </div>
-    </section>
 
     <main>
 
 
 
-    <!-- ==================== HERO SECTION ==================== -->
-    <section class="hero-section section section--kombi-hero">
-        <div class="hero-background">
-            <div class="hero-overlay"></div>
-        </div>
-        
-        <div class="container">
-            <div class="hero-grid">
-                <!-- Sol Sütun - Kombi Markaları -->
-                <div class="hero-brands hero-brands--left">
-                    <h3 class="brands-title">Hizmet Verdiğimiz Markalar</h3>
-                    <div class="brands-grid">
-                        <div class="brand-item">Vaillant</div>
-                        <div class="brand-item">Bosch</div>
-                        <div class="brand-item">Buderus</div>
-                        <div class="brand-item">Viessmann</div>
-                        <div class="brand-item">Ariston</div>
-                        <div class="brand-item">Baxi</div>
-                        <div class="brand-item">Demirdöküm</div>
-                        <div class="brand-item">Protherm</div>
-                        <div class="brand-item">Ferroli</div>
-                       
-                    </div>
-                </div>
-                
-                <!-- Orta Sütun - Ana İçerik -->
-                <div class="hero-content">
-                    <h1 class="hero-title">Evinizin Sıcaklığı <span class="highlight">Bizden</span></h1>
-                    <div class="hero-badge">
-                        <span class="badge-text">Özel Yetkili Kombi Servisi</span>
-                    </div>
-                    <p class="hero-subtitle">Doğalgaz faturasında %30'a kadar tasarruf için doğru bakım ve profesyonel hizmet.</p>
-                    
-                    <div class="hero-cta">
-                        <a href="#contact" class="btn btn--primary js-open-quote">Hemen Teklif Al</a>
+        <!-- ==================== YENİLENMİŞ MODERN HERO BÖLÜMÜ (MOBİL & PC UYUMLU) ==================== -->
+        <section class="section--hero-modern" id="heroSection">
+            <div class="hero-unified-container">
+                <!-- 2 Kolonlu Ana Grid: Mobilde tek sütun dikey akış, Masaüstünde 2 sütun -->
+                <div class="hero-unified-grid">
+                    <!-- Sol Kolon: Başlık, Açıklama, Butonlar ve Sorun Seçim Kartı -->
+                    <div class="hero-unified-left">
+                        <!-- Üst Konum / Kimlik Rozeti -->
+                        <div class="hero-pill-badge" id="heroPillBadge">
+                            <span class="pulse-indicator"></span>
+                            <span class="pill-text">Özel Yetkili Kombi Servisi • Osman Tari</span>
+                        </div>
+
+                        <!-- Ana Başlık Kartı / Başlık -->
+                        <div class="hero-title-wrap">
+                            <h1 class="hero-main-title">
+                                Evinizin Sıcaklığı,<br>
+                                <span class="hl-terracotta">Ustasının Güvencesinde.</span>
+                            </h1>
+                            <p class="hero-main-desc">
+                                Vaillant, Bosch, Buderus ve daha birçok kombi markasında ezbere parça değişimi değil;
+                                <strong>25 yılı aşkın ustalık tecrübesiyle</strong> yerinde doğru teşhis, 1 yıl
+                                garantili orijinal yedek parça ve ilaçlı makineli petek temizliği sunuyoruz.
+                            </p>
+                        </div>
+
+                        <!-- Buton Grubu (Desktop'ta yan yana, Mobilde şık alt alta) -->
+                        <div class="hero-cta-wrapper hero-unified-cta">
+                            <a href="javascript:void(0)" class="btn hero-primary-cta js-open-quote" id="heroQuoteBtn"
+                                role="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="quoteDrawer"
+                                data-open-drawer="quote">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Online Servis Randevusu Al</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="hizmetlerimiz.html" class="btn hero-mob-secondary-btn hero-pc-secondary-btn" id="heroServicesBtn">
+                                <i class="fas fa-tools"></i>
+                                <span>Hizmetlerimizi İncele</span>
+                                <i class="fas fa-arrow-right mob-only-arrow"></i>
+                            </a>
+                        </div>
+
+                        <!-- Kombinizde Hangi Sorun Var? Kartı -->
+                        <div class="hero-pc-trouble-card hero-trouble-card-unified">
+                            <div class="trouble-header">
+                                <i class="fas fa-bolt text-warning"></i>
+                                <span>Kombinizde Hangi Sorun Var?</span>
+                            </div>
+                            <div class="trouble-chips-wrap">
+                                <button type="button" class="trouble-chip js-trouble-click js-open-quote" data-issue="Sıcak Su Gelmiyor">
+                                    <i class="fas fa-tint text-primary"></i> Sıcak Su Gelmiyor
+                                </button>
+                                <button type="button" class="trouble-chip js-trouble-click js-open-quote" data-issue="Petekler Isınmıyor">
+                                    <i class="fas fa-fire text-danger"></i> Petekler Isınmıyor
+                                </button>
+                                <button type="button" class="trouble-chip js-trouble-click js-open-quote" data-issue="Su Basıncı Düşüyor">
+                                    <i class="fas fa-info-circle text-info"></i> Su Basıncı Düşüyor
+                                </button>
+                                <button type="button" class="trouble-chip js-trouble-click js-open-quote" data-issue="Arıza Kodu Yanıyor">
+                                    <i class="fas fa-exclamation-triangle text-warning"></i> Arıza Kodu Yanıyor
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="trust-badge">
-                        <div class="trust-item">
-                            <i class="fas fa-star"></i>
-                            <span>Malatya'da 4.9/5 müşteri memnuniyeti</span>
+                    <!-- Sağ Kolon: İki Görselli Usta ve Güven Kartı -->
+                    <div class="hero-unified-right">
+                        <div class="hero-pc-card hero-mobile-card">
+                            <!-- İki Görsel Vitrini (Petek Temizlik + Kombi Bakım Onarım) -->
+                            <div class="pc-visuals-duo">
+                                <!-- Sağ Üst Konum Rozeti: Malatya -->
+                                <div class="pc-location-badge">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Malatya</span>
+                                </div>
+
+                                <!-- 1. Görsel (Petek Temizlik - Ana LCP Görseli) -->
+                                <div class="pc-img-box pc-img-box--main">
+                                    <picture>
+                                        <source type="image/avif" srcset="RESIMLER/hero-petek-temizligi-600w.avif 600w, RESIMLER/hero-petek-temizligi.avif 1200w" sizes="(max-width: 768px) 92vw, (max-width: 992px) 440px, 580px">
+                                        <source type="image/webp" srcset="RESIMLER/hero-petek-temizligi-600w.webp 600w, RESIMLER/hero-petek-temizligi.webp 1200w" sizes="(max-width: 768px) 92vw, (max-width: 992px) 440px, 580px">
+                                        <img src="RESIMLER/hero-petek-temizligi.jpg"
+                                            alt="Malatya Kalorifer Petek Temizlik ve Tesisat" width="580"
+                                            height="380" loading="eager" fetchpriority="high" decoding="async">
+                                    </picture>
+                                    <div class="pc-img-tag tag-navy">
+                                        <i class="fas fa-fire"></i>
+                                        <span>Petek Temizlik</span>
+                                    </div>
+                                </div>
+
+                                <!-- 2. Görsel (Kombi Bakım Onarım - İkincil Görsel) -->
+                                <div class="pc-img-box pc-img-box--overlap">
+                                    <picture>
+                                        <source type="image/avif" srcset="RESIMLER/hero-kombi-bakim-onarim-500w.avif 500w, RESIMLER/hero-kombi-bakim-onarim.avif 896w" sizes="(max-width: 768px) 65vw, (max-width: 992px) 360px, 460px">
+                                        <source type="image/webp" srcset="RESIMLER/hero-kombi-bakim-onarim-500w.webp 500w, RESIMLER/hero-kombi-bakim-onarim.webp 896w" sizes="(max-width: 768px) 65vw, (max-width: 992px) 360px, 460px">
+                                        <img src="RESIMLER/hero-kombi-bakim-onarim.jpg"
+                                            alt="Malatya Kombi Bakım Onarım ve Servisi" width="460" height="320"
+                                            loading="eager" decoding="async">
+                                    </picture>
+                                    <div class="pc-img-tag tag-blue">
+                                        <i class="fas fa-tools"></i>
+                                        <span>Kombi Bakım Onarım</span>
+                                    </div>
+                                </div>
+
+                                <!-- Osman Tari • Kombi Servisi Rozeti -->
+                                <div class="pc-master-badge">
+                                    <div class="pc-master-icon">
+                                        <i class="fas fa-certificate text-warning"></i>
+                                    </div>
+                                    <div class="pc-master-text">
+                                        <strong>Osman Tari • 25+ Yıl Baş Usta</strong>
+                                        <small>MYK Seviye 4 • Garantili Servis</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Alt 4'lü İstatistik Barı -->
+                            <div class="pc-card-stats-row">
+                                <div class="pc-card-stat">
+                                    <div class="pc-stat-icon text-success" style="color: #059669;">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round" aria-hidden="true">
+                                            <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline>
+                                            <polyline points="17 18 23 18 23 12"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="pc-stat-text">
+                                        <strong>%30 Tasarruf</strong>
+                                        <span>Doğalgazda</span>
+                                    </div>
+                                </div>
+                                <div class="pc-stat-divider"></div>
+                                <div class="pc-card-stat">
+                                    <div class="pc-stat-icon"><i class="fas fa-shield-alt"></i></div>
+                                    <div class="pc-stat-text">
+                                        <strong>1 Yıl</strong>
+                                        <span>Parça Garantisi</span>
+                                    </div>
+                                </div>
+                                <div class="pc-stat-divider"></div>
+                                <div class="pc-card-stat">
+                                    <div class="pc-stat-icon"><i class="fas fa-award"></i></div>
+                                    <div class="pc-stat-text">
+                                        <strong>25+ Yıl</strong>
+                                        <span>Ustalık Tecrübesi</span>
+                                    </div>
+                                </div>
+                                <div class="pc-stat-divider"></div>
+                                <div class="pc-card-stat">
+                                    <div class="pc-stat-icon text-warning"><i class="fas fa-star"></i></div>
+                                    <div class="pc-stat-text">
+                                        <strong>4.9 / 5</strong>
+                                        <span>5.000+ Mutlu Ev</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Sağ Sütun - Kombi Markaları -->
-                <div class="hero-brands hero-brands--right">
-                    <h3 class="brands-title">Hizmet Verdiğimiz Markalar</h3>
-                    <div class="brands-grid">
-                        <div class="brand-item">Baymak</div>
-                        <div class="brand-item">E.C.A.</div>
-                        <div class="brand-item">Immergas</div>
-                       
-                        <div class="brand-item">Beko</div>
-                        
-                        <div class="brand-item">Daikin</div>
-                        <div class="brand-item">Baykan</div>
-                        <div class="brand-item">Alarko</div>
-                        <div class="brand-item">Warmhaus</div>
-                        <div class="brand-item">Airfel</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- ==================== VALUE PROPOSITION ==================== -->
-    <section class="value-prop section section--white">
-        <div class="container">
-            <h2 class="section-title">Neden Bizi Seçmelisiniz?</h2>
-            <div class="value-grid">
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <h3>Hızlı Bakım Ve Onarım</h3>
-                    <p>Doğru bakım, onarım  ve orjinal yedek parça ile ile %30'a kadar enerji tasarrufu sağlıyoruz.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>Hızlı Montaj</h3>
-                    <p>Deneyimli ekibimiz ile aynı gün içinde montaj tamamlanır.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>7/24 Destek</h3>
-                    <p>Acil durumlar için 7/24 teknik destek ve servis hizmeti.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== FEATURED SERVICES ==================== -->
-    <section class="featured-services section section--comfort">
-        <div class="container">
-            <h2 class="section-title">Öne Çıkan Hizmetlerimiz</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <h3>Kombi Montaj</h3>
-                    <p>Profesyonel ekip ile güvenli ve hızlı montaj hizmeti</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>Kombi Bakım</h3>
-                    <p>Periyodik bakım ile kombinizin uzun ömürlü ve verimli çalışması</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-wrench"></i>
-                    </div>
-                    <h3>Kombi Onarım</h3>
-                    <p>Hızlı arıza tespiti ve profesyonel onarım hizmeti</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3>Yedek Parça</h3>
-                    <p>Orijinal yedek parça garantisi ile güvenilir hizmet</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== TRUST ELEMENTS ==================== -->
-    <section class="trust-section section section--white">
-        <div class="container">
-            <div class="trust-content">
-                <div class="trust-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">4.9</div>
-                        <div class="stat-label">Müşteri Puanı</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">5000+</div>
-                        <div class="stat-label">Mutlu Müşteri</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">25+</div>
-                        <div class="stat-label">Yıl Deneyim</div>
-                    </div>
-                </div>
-                
-                <div class="certifications">
-                    <h3>Belgelerimiz</h3>
-                    <div class="cert-grid">
-                        <div class="cert-item">
-                            <i class="fas fa-certificate"></i>
-                            <span>ISO 9001</span>
+                <!-- Alt Bölüm: Hizmet Verdiğimiz Markalar Kartı (Genişletilebilir) -->
+                <div class="hero-brands-showcase js-brands-card" id="mobBrandsCard" role="region" aria-labelledby="mobBrandsTitle">
+                    <div class="brands-header">
+                        <div class="brands-header-left">
+                            <i class="fas fa-wrench" aria-hidden="true"></i>
+                            <span id="mobBrandsTitle">Hizmet Verdiğimiz Markalar</span>
                         </div>
-                        <div class="cert-item">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>Güvenlik Belgesi</span>
-                        </div>
-                        <div class="cert-item">
-                            <i class="fas fa-medal"></i>
-                            <span>Kalite Ödülü</span>
-                        </div>
+                        <button type="button" class="brands-expand-badge js-brands-toggle" id="mobBrandsToggle"
+                            aria-expanded="false" aria-controls="mobBrandsPills">
+                            <span class="expand-text">+12 Marka</span>
+                            <i class="fas fa-chevron-down expand-chevron" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="brands-pills-wrap" id="mobBrandsPills">
+                        <span class="brand-chip brand-chip--featured">Vaillant</span>
+                        <span class="brand-chip brand-chip--featured">Bosch</span>
+                        <span class="brand-chip brand-chip--featured">Buderus</span>
+                        <span class="brand-chip brand-chip--featured">Demirdöküm</span>
+                        <span class="brand-chip brand-chip--featured">Baymak</span>
+                        <span class="brand-chip brand-chip--featured">E.C.A.</span>
+                        <span class="brand-chip brand-chip--extra">Viessmann</span>
+                        <span class="brand-chip brand-chip--extra">Ariston</span>
+                        <span class="brand-chip brand-chip--extra">Daikin</span>
+                        <span class="brand-chip brand-chip--extra">Protherm</span>
+                        <span class="brand-chip brand-chip--extra">Warmhaus</span>
+                        <span class="brand-chip brand-chip--extra">Alarko</span>
+                        <span class="brand-chip brand-chip--extra">Baxi</span>
+                        <span class="brand-chip brand-chip--extra">Ferroli</span>
+                        <span class="brand-chip brand-chip--extra">Immergas</span>
+                        <span class="brand-chip brand-chip--extra">Beko</span>
+                        <span class="brand-chip brand-chip--extra">Baykan</span>
+                        <span class="brand-chip brand-chip--extra">Airfel</span>
+                    </div>
+                    <div class="brands-card-hint">
+                        <small><i class="fas fa-shield-alt"></i> Tüm modellerde 1 yıl garantili orijinal parça</small>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-
-    <!-- ==================== ABOUT SECTION ==================== -->
-    <section class="about section section--comfort">
-        <div class="container">
-            <h2 class="section-title">Hakkımızda</h2>
-
-            <div class="about-story">
-                <div class="story-timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-icon">
+        <!-- ==================== VALUE PROPOSITION ==================== -->
+        <section class="value-prop section section--white">
+            <div class="container">
+                <h2 class="section-title">Neden Bizi Seçmelisiniz?</h2>
+                <div class="value-grid">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Hızlı Bakım Ve Onarım</h3>
+                        <p>Doğru bakım, onarım ve orjinal yedek parça ile ile %30'a kadar enerji tasarrufu sağlıyoruz.
+                        </p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
                             <i class="fas fa-tools"></i>
                         </div>
-                        <div class="timeline-content">
-                            <h4>1999 - Başlangıç</h4>
-                            <p>Çırak olarak sıhhi tesisat ve mekanik alanda mesleki eğitime başladım.</p>
+                        <h3>Hızlı Montaj</h3>
+                        <p>Deneyimli ekibimiz ile aynı gün içinde montaj tamamlanır.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>7/24 Destek</h3>
+                        <p>Acil durumlar için 7/24 teknik destek ve servis hizmeti.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== FEATURED SERVICES ==================== -->
+        <section class="featured-services section section--comfort">
+            <div class="container">
+                <h2 class="section-title">Öne Çıkan Hizmetlerimiz</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h3>Kombi Montaj</h3>
+                        <p>Profesyonel ekip ile güvenli ve hızlı montaj hizmeti</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Kombi Bakım</h3>
+                        <p>Periyodik bakım ile kombinizin uzun ömürlü ve verimli çalışması</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-wrench"></i>
+                        </div>
+                        <h3>Kombi Onarım</h3>
+                        <p>Hızlı arıza tespiti ve profesyonel onarım hizmeti</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Yedek Parça</h3>
+                        <p>Orijinal yedek parça garantisi ile güvenilir hizmet</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TRUST ELEMENTS ==================== -->
+        <section class="trust-section section section--white">
+            <div class="container">
+                <div class="trust-content">
+                    <div class="trust-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">4.9</div>
+                            <div class="stat-label">Müşteri Puanı</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5000+</div>
+                            <div class="stat-label">Mutlu Müşteri</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">25+</div>
+                            <div class="stat-label">Yıl Deneyim</div>
                         </div>
                     </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <div class="timeline-content">
-                            <h4>2014 - Firma Kurulumu</h4>
-                            <p>Hilal Teknik olarak profesyonel hizmet vermeye başladım.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-icon">
-                            <i class="fas fa-certificate"></i>
-                        </div>
-                        <div class="timeline-content">
-                            <h4>Eğitim & Sertifikasyon</h4>
-                            <p>Gaz yakıcı cihazlar servis personeli ve kombi elektronik kart eğitimlerini tamamladım. MEB ve MYK gaz yakıcı cihazlar yetkili servis personeli (seviye 4) belgelerini edindim.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-icon">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div class="timeline-content">
-                            <h4>Günümüz</h4>
-                            <p>Mekanik tecrübemi aldığım eğitimlerle birleştirerek, kombi arıza, bakım, onarım, montaj ve yedek parça konusunda profesyonel hizmet verecek kapasiteye ulaştım.</p>
+
+                    <div class="certifications">
+                        <h3>Belgelerimiz</h3>
+                        <div class="cert-grid">
+                            <div class="cert-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>MYK Seviye 4 Belgesi</span>
+                            </div>
+                            <div class="cert-item">
+                                <i class="fas fa-award"></i>
+                                <span>MEB Yetkili Servis</span>
+                            </div>
+                            <div class="cert-item">
+                                <i class="fas fa-microchip"></i>
+                                <span>Elektronik Kart Uzmanlığı</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-        </div>
-    </section>
 
-    <!-- ==================== STICKY CALL BAR ==================== -->
+        <!-- ==================== ABOUT SECTION ==================== -->
+        <section class="about section section--comfort">
+            <div class="container">
+                <h2 class="section-title">Hakkımızda</h2>
+
+                <div class="about-story">
+                    <div class="story-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <div class="timeline-card-header">
+                                    <h3>1999 - Başlangıç</h3>
+                                    <div class="timeline-icon" aria-hidden="true">
+                                        <i class="fas fa-tools"></i>
+                                    </div>
+                                </div>
+                                <p>Çırak olarak sıhhi tesisat ve mekanik alanda mesleki eğitime başladım.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <div class="timeline-card-header">
+                                    <h3>2014 - Firma Kurulumu</h3>
+                                    <div class="timeline-icon" aria-hidden="true">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </div>
+                                </div>
+                                <p>Hilal Teknik olarak profesyonel hizmet vermeye başladım.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <div class="timeline-card-header">
+                                    <h3>Eğitim & Sertifikasyon</h3>
+                                    <div class="timeline-icon" aria-hidden="true">
+                                        <i class="fas fa-certificate"></i>
+                                    </div>
+                                </div>
+                                <p>Gaz yakıcı cihazlar servis personeli ve kombi elektronik kart eğitimlerini
+                                    tamamladım. MEB ve MYK gaz yakıcı cihazlar yetkili servis personeli (seviye 4)
+                                    belgelerini edindim.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <div class="timeline-card-header">
+                                    <h3>Günümüz</h3>
+                                    <div class="timeline-icon" aria-hidden="true">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <p>Mekanik tecrübemi aldığım eğitimlerle birleştirerek, kombi arıza, bakım, onarım,
+                                    montaj ve yedek parça konusunda profesyonel hizmet verecek kapasiteye ulaştım.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
 
     </main>
 
@@ -357,13 +590,24 @@
                 <div class="footer-logo">
                     <h2>HİLAL <span>Teknik</span></h2>
                     <p>25 yılı aşkın tecrübesiyle Malatya'da hizmetinizde</p>
-                    <p class="footer-owner">Sahibi: Osman Tari</p>
+                    <div class="footer-owner-dev-group">
+                        <span class="footer-owner">
+                            <i class="fas fa-user-tie" aria-hidden="true"></i>
+                            <span>İşletme Sahibi: Osman Tari</span>
+                        </span>
+                        <a href="iletisim.html#siteTasarimcisi" class="footer-dev-badge"
+                            title="Web Tasarım & Geliştirme: Harun Alan">
+                            <i class="fas fa-code" aria-hidden="true"></i>
+                            <span>Tasarlayan & Geliştiren: Harun Alan</span>
+                        </a>
+                    </div>
                 </div>
                 <div class="footer-links">
                     <h3>Hızlı Linkler</h3>
                     <ul>
                         <li><a href="index.html">Anasayfa</a></li>
                         <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                        <li><a href="hizmetlerimiz.html">Hizmetlerimiz</a></li>
                         <li><a href="galeri.html">Galeri</a></li>
                         <li><a href="iletisim.html">İletişim</a></li>
                     </ul>
@@ -371,9 +615,14 @@
                 <div class="footer-social">
                     <h3>Sosyal Medya</h3>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/hilal.teknik.tesisat.malatya" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/hilal_teknik_malatya" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/905376074817" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/hilal.teknik.tesisat.malatya" target="_blank"
+                            rel="noopener noreferrer" aria-label="Facebook Sayfamız"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/hilal_teknik_malatya" target="_blank"
+                            rel="noopener noreferrer" aria-label="Instagram Sayfamız"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/905376074817" target="_blank" rel="noopener noreferrer"
+                            aria-label="WhatsApp Canlı Destek"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
@@ -384,14 +633,16 @@
     </footer>
 
     <!-- ==================== TEKLIF ÇEKMECE (DRAWER) ==================== -->
-    <div class="drawer" id="quoteDrawer" aria-hidden="true" role="dialog" aria-label="Teklif Al">
+    <div class="drawer" id="quoteDrawer" aria-hidden="true" role="dialog" aria-modal="true"
+        aria-labelledby="drawerTitle" inert>
         <div class="drawer-panel">
             <div class="drawer-header">
-                <div class="drawer-title">
-                    <i class="fas fa-tools"></i>
+                <div class="drawer-title" id="drawerTitle">
+                    <i class="fas fa-tools" aria-hidden="true"></i>
                     Hizmet Seçin
                 </div>
-                <button class="drawer-close" id="drawerClose" aria-label="Kapat"><i class="fas fa-times"></i></button>
+                <button class="drawer-close" id="drawerClose" aria-label="Kapat"><i class="fas fa-times"
+                        aria-hidden="true"></i></button>
             </div>
             <div class="drawer-body">
                 <div class="service-options">
@@ -408,7 +659,8 @@
                                 <span><i class="fas fa-check"></i> Yerinde onarım</span>
                             </div>
                             <div class="service-actions">
-                                <a href="https://wa.me/905376074817?text=Kombi bakım ve onarım hakkında bilgi almak istiyorum" class="btn btn--primary" target="_blank">
+                                <a href="https://wa.me/905376074817?text=Kombi%20bak%C4%B1m%20ve%20onar%C4%B1m%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum"
+                                    class="btn btn--primary" target="_blank" rel="noopener noreferrer">
                                     <i class="fab fa-whatsapp"></i> WhatsApp
                                 </a>
                                 <a href="tel:05376074817" class="btn btn--secondary">
@@ -417,7 +669,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="service-option">
                         <div class="service-icon">
                             <i class="fas fa-cog"></i>
@@ -431,7 +683,8 @@
                                 <span><i class="fas fa-check"></i> Sistem kurulumu</span>
                             </div>
                             <div class="service-actions">
-                                <a href="https://wa.me/905376074817?text=Kombi montaj ve kurulum hakkında bilgi almak istiyorum" class="btn btn--primary" target="_blank">
+                                <a href="https://wa.me/905376074817?text=Kombi%20montaj%20ve%20kurulum%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum"
+                                    class="btn btn--primary" target="_blank" rel="noopener noreferrer">
                                     <i class="fab fa-whatsapp"></i> WhatsApp
                                 </a>
                                 <a href="tel:05376074817" class="btn btn--secondary">
@@ -448,152 +701,113 @@
 
     <!-- ==================== JAVASCRIPT ==================== -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // CTA Teklif Al tetikleyici
+        document.addEventListener('DOMContentLoaded', function () {
             const drawer = document.getElementById('quoteDrawer');
             const drawerClose = document.getElementById('drawerClose');
-            
+            const heroQuoteBtn = document.getElementById('heroQuoteBtn');
             function openDrawer() {
+                if (!drawer) return;
+                drawer.removeAttribute('inert');
                 drawer.classList.add('open');
                 drawer.setAttribute('aria-hidden', 'false');
+                heroQuoteBtn?.setAttribute('aria-expanded', 'true');
                 document.body.style.overflow = 'hidden';
             }
+
             function closeDrawer() {
+                if (!drawer) return;
                 drawer.classList.remove('open');
                 drawer.setAttribute('aria-hidden', 'true');
+                drawer.setAttribute('inert', '');
+                heroQuoteBtn?.setAttribute('aria-expanded', 'false');
                 document.body.style.overflow = '';
             }
-            
-            document.querySelectorAll('a.btn.btn--secondary, .call-btn--quote').forEach(el => {
-                el.addEventListener('click', (e) => {
-                    // Teklif Alma butonları çekmeceyi açsın
-                    // İşlevsiz butonları (javascript:void(0)) hariç tut
-                    if ((el.classList.contains('btn--secondary') || el.classList.contains('call-btn--quote')) && 
-                        el.getAttribute('href') !== 'javascript:void(0)') {
+
+            window.openQuoteDrawer = openDrawer;
+            window.closeQuoteDrawer = closeDrawer;
+
+            // Teklif Alma butonları tetikleyici
+            document.querySelectorAll('.js-open-quote, .call-btn--quote, [data-open-drawer="quote"]').forEach(el => {
+                el.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openDrawer();
+                });
+            });
+
+            drawerClose?.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                closeDrawer();
+            });
+
+            drawer?.addEventListener('click', function (e) {
+                if (e.target === drawer) closeDrawer();
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && drawer?.classList.contains('open')) {
+                    closeDrawer();
+                }
+            });
+
+            // ==================== HİZMET VERDİĞİMİZ MARKALAR KART GENİŞLEME / DARALMA ====================
+            const brandsCards = document.querySelectorAll('.js-brands-card');
+            brandsCards.forEach(card => {
+                function toggleBrandCard(e) {
+                    // Eğer tıklanan eleman bir link ise varsayılan davranışı bozma
+                    if (e.target.closest('a')) return;
+
+                    const isExpanded = card.classList.toggle('is-expanded');
+                    card.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+                    const toggleBtn = card.querySelector('.js-brands-toggle');
+                    if (toggleBtn) {
+                        toggleBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+                    }
+
+                    const badgeText = card.querySelector('.expand-text');
+                    if (badgeText) {
+                        if (card.id === 'mobBrandsCard') {
+                            badgeText.textContent = isExpanded ? 'Daha Az' : '+12 Marka';
+                        } else {
+                            badgeText.textContent = isExpanded ? 'Daha Az Göster' : '+12 Marka Daha';
+                        }
+                    }
+                }
+
+                card.addEventListener('click', toggleBrandCard);
+                card.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
-                        openDrawer();
+                        toggleBrandCard(e);
                     }
                 });
             });
-            
-            // Birincil CTA da çekmeceyi açsın
-            document.querySelectorAll('.js-open-quote').forEach(el => {
-                el.addEventListener('click', (e) => { e.preventDefault(); openDrawer(); });
-            });
-            
-            drawerClose?.addEventListener('click', closeDrawer);
-            drawer?.addEventListener('click', (e) => {
-                if (e.target === drawer) closeDrawer();
-            });
         });
     </script>
 
-    <!-- ==================== SCROLL EFFECTS JAVASCRIPT ==================== -->
-    <script>
-        // Contact action bar scroll behavior
-        let lastScrollTop = 0;
-        const contactActionBar = document.querySelector('.contact-action-bar');
-
-        window.addEventListener('scroll', function() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // Scrolling down - move contact action bar to top
-            if (scrollTop > lastScrollTop && scrollTop > 80) {
-                contactActionBar.classList.add('action-bar-top');
-            }
-            // Scrolling up - keep bar at top until reaching original position
-            else if (scrollTop < lastScrollTop) {
-                // Only move bar back when reaching original position (128px desktop, 108px mobile)
-                const threshold = window.innerWidth <= 768 ? 108 : 128;
-                if (scrollTop <= threshold) {
-                    contactActionBar.classList.remove('action-bar-top');
-                }
-                // Above threshold, keep bar at top during upward scroll
-            }
-            // At very top - always show bar in original position
-            else if (scrollTop <= 80) {
-                contactActionBar.classList.remove('action-bar-top');
-            }
-            
-            lastScrollTop = scrollTop;
-        });
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-        
-        // Sabit navigasyon sistemi - aktif sayfa işaretleme
-        function setActiveNavItem() {
-            const currentPage = window.location.pathname;
-            const navItems = document.querySelectorAll('.nav-item');
-            
-            navItems.forEach(item => {
-                item.classList.remove('active');
-                const href = item.getAttribute('href');
-                
-                if (currentPage.includes('index.html') || currentPage === '/' || currentPage.endsWith('/')) {
-                    if (href === 'index.html') {
-                        item.classList.add('active');
-                    }
-                } else if (currentPage.includes('hakkimizda')) {
-                    if (href === 'hakkimizda.html') {
-                        item.classList.add('active');
-                    }
-                } else if (currentPage.includes('galeri')) {
-                    if (href === 'galeri.html') {
-                        item.classList.add('active');
-                    }
-                } else if (currentPage.includes('iletisim')) {
-                    if (href === 'iletisim.html') {
-                        item.classList.add('active');
-                    }
-                }
-            });
-        }
-        
-        // Sayfa yüklendiğinde aktif öğeyi işaretle
-        setActiveNavItem();
-        
-        // Mobil menü kodu kaldırıldı
-    </script>
+    <!-- ==================== SAĞ ALT SABİT İLETİŞİM & WHATSAPP BUTONLARI ==================== -->
+    <aside class="floating-contact-actions" aria-label="Hızlı İletişim">
+        <a href="https://wa.me/905376074817" class="floating-btn floating-btn--whatsapp" target="_blank"
+            rel="noopener noreferrer" title="WhatsApp Canlı Destek" aria-label="WhatsApp İle İletişime Geçin">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            <span class="floating-btn-text">WhatsApp</span>
+        </a>
+        <a href="tel:05376074817" class="floating-btn floating-btn--phone" title="Hemen Arayın: 0537 607 48 17"
+            aria-label="Telefon İle Hemen Arayın">
+            <i class="fas fa-phone-alt" aria-hidden="true"></i>
+            <span class="floating-btn-text">0537 607 48 17</span>
+        </a>
+    </aside>
 
     <!-- ==================== YUKARI ÇIKMA BUTONU ==================== -->
     <button id="scrollToTop" class="scroll-to-top" aria-label="Yukarı çık">
-        <i class="fas fa-arrow-up"></i>
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 
-    <script>
-        // Yukarı çıkma butonu
-        const scrollToTopBtn = document.getElementById('scrollToTop');
-        
-        // Sayfa kaydırıldığında butonu göster/gizle
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                scrollToTopBtn.classList.add('show');
-            } else {
-                scrollToTopBtn.classList.remove('show');
-            }
-        });
-        
-        // Butona tıklandığında yukarı çık
-        scrollToTopBtn.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    </script>
+    <!-- ==================== MERKEZİ YAPILANDIRMA VE DİNAMİK SENKRONİZASYON ==================== -->
+    <script src="site-config.min.js" defer></script>
+    <script src="analytics.min.js" defer></script>
 </body>
+
 </html>
-
-

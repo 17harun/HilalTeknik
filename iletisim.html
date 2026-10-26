@@ -1,38 +1,107 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="robots" content="index, follow">
-    
+    <!-- Google Analytics (GA4) - Non-blocking Resilient Loader -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-F9GZ1TCNVZ');
+
+        (function () {
+            var gaLoaded = false;
+            function loadGA() {
+                if (gaLoaded) return;
+                gaLoaded = true;
+                var s = document.createElement('script');
+                s.async = true;
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-F9GZ1TCNVZ';
+                document.head.appendChild(s);
+            }
+
+            // 1. Idle Callback with cross-browser fallback (no interaction required)
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(loadGA, { timeout: 2000 });
+            } else {
+                setTimeout(loadGA, 1500);
+            }
+
+            // 2. Early user interaction triggers immediate load
+            var events = ['scroll', 'pointerdown', 'touchstart', 'keydown'];
+            function onInteraction() {
+                loadGA();
+                events.forEach(function (e) {
+                    window.removeEventListener(e, onInteraction, { passive: true });
+                });
+            }
+            events.forEach(function (e) {
+                window.addEventListener(e, onInteraction, { passive: true, once: true });
+            });
+
+            // 3. Fallback on early page leave (bounces) so zero hits are lost
+            window.addEventListener('visibilitychange', function () {
+                if (document.visibilityState === 'hidden') loadGA();
+            }, { once: true });
+            window.addEventListener('pagehide', loadGA, { once: true });
+        })();
+    </script>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="RESIMLER/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="RESIMLER/apple-touch-icon.png">
+
     <!-- Güvenlik Başlıkları -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com;">
-    <meta name="description" content="Hilal Teknik İletişim - Osman Tari: 0537 607 48 17. Vaillant, Bosch, Buderus, Viessmann, Ariston kombi servisi Malatya. 7/24 acil kombi tamiri, montaj, bakım hizmeti.">
-    <meta name="keywords" content="hilal teknik iletişim, osman tari telefon, 0537 607 48 17, malatya kombi servisi iletişim, vaillant kombi servisi telefon, bosch kombi servisi iletişim, buderus kombi servisi telefon, viessmann kombi servisi iletişim, ariston kombi servisi telefon, 7/24 kombi servisi, acil kombi tamiri, kombi servisi whatsapp, malatya kombi tamircisi">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://fonts.googleapis.com https://cdnjs.cloudflare.com https://server.arcgisonline.com; frame-src 'self' https://www.google.com https://maps.google.com;">
+    <meta name="description"
+        content="Hilal Teknik İletişim - Osman Tari: 0537 607 48 17. Vaillant, Bosch, Buderus, Viessmann, Ariston kombi servisi Malatya. 7/24 acil kombi tamiri, montaj, bakım hizmeti.">
+    <meta name="keywords"
+        content="hilal teknik iletişim, osman tari telefon, 0537 607 48 17, malatya kombi servisi iletişim, vaillant kombi servisi telefon, bosch kombi servisi iletişim, buderus kombi servisi telefon, viessmann kombi servisi iletişim, ariston kombi servisi telefon, 7/24 kombi servisi, acil kombi tamiri, kombi servisi whatsapp, malatya kombi tamircisi">
+    <link rel="canonical" href="https://hilalteknik.com/iletisim.html">
     <meta property="og:locale" content="tr_TR">
     <meta property="og:type" content="website">
     <meta property="og:title" content="İletişim | Hilal Teknik - Malatya">
-    <meta property="og:description" content="Hilal Teknik ile iletişime geçin. Malatya'da kombi servisi için 7/24 hizmet. Sahibi Osman Tari.">
-    <meta property="og:image" content="RESIMLER/resim3.jpeg">
-    <meta property="og:url" content="https://www.hilalsihhitesisat.com/iletisim">
+    <meta property="og:description"
+        content="Hilal Teknik ile iletişime geçin. Malatya'da kombi servisi için 7/24 hizmet. Sahibi Osman Tari.">
+    <meta property="og:image" content="https://hilalteknik.com/RESIMLER/sosyal-paylasim-logo.png">
+    <meta property="og:url" content="https://hilalteknik.com/iletisim.html">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="İletişim | Hilal Teknik - Malatya">
-    <meta name="twitter:description" content="Hilal Teknik ile iletişime geçin. Malatya'da kombi servisi için 7/24 hizmet. Sahibi Osman Tari.">
+    <meta name="twitter:description"
+        content="Hilal Teknik ile iletişime geçin. Malatya'da kombi servisi için 7/24 hizmet. Sahibi Osman Tari.">
+    <meta name="twitter:image" content="https://hilalteknik.com/RESIMLER/sosyal-paylasim-logo.png">
     <title>İletişim | Hilal Teknik - Osman Tari | 0537 607 48 17 | Vaillant Bosch Buderus Servis</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('hilal_theme');
+                document.documentElement.setAttribute('data-theme', (t === 'light' || t === 'dark') ? t : 'dark');
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="image" href="RESIMLER/arka-plan-hilal-ambient.webp">
+    <link rel="stylesheet" href="style.min.css?v=20261026_opt5">
+    <link rel="stylesheet" href="icons.min.css?v=20261026_opt3">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css"></noscript>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "HVACBusiness",
-              "name": "Hilal Teknik",
+      "name": "Hilal Teknik",
+      "url": "https://hilalteknik.com/iletisim.html",
       "address": {"@type": "PostalAddress", "addressLocality": "Malatya", "addressCountry": "TR"},
       "telephone": "+90 537 607 48 17",
-      "email": "info@hilalteknik.com",
+      "email": "osman_tari@hotmail.com",
       "areaServed": "Malatya",
       "contactPoint": [{
         "@type": "ContactPoint",
@@ -44,221 +113,272 @@
     }
     </script>
 </head>
+
 <body>
-    <!-- ==================== HEADER / NAVBAR ==================== -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <div class="logo-emblem">
-                    <!-- Dönen halka -->
-                    <div class="rotating-ring"></div>
-                    
-                    <!-- Küçük kayalar -->
-                    <div class="space-rocks">
-                        <div class="rock rock-1"></div>
-                        <div class="rock rock-2"></div>
-                        <div class="rock rock-3"></div>
-                        <div class="rock rock-4"></div>
-                        <div class="rock rock-5"></div>
-                        <div class="rock rock-6"></div>
+    <!-- ==================== AMBİENT DİNAMİK ARKA PLAN ==================== -->
+    <div class="ambient-interactive-bg" id="ambientBg" aria-hidden="true">
+        <div class="ambient-bg-art"></div>
+        <div class="ambient-bg-glow"></div>
+    </div>
+
+    <!-- ==================== SİTE HEADER & NAVİGASYON (YÜZEN BUZLU CAM KAPSÜL) ==================== -->
+    <header class="site-header" id="siteHeader">
+        <div class="header-container">
+            <div class="nav-cluster nav-cluster--left">
+                <a href="index.html" class="logo" aria-label="HİLAL Teknik - Anasayfa">
+                    <div class="logo-emblem">
+                        <picture class="logo-emblem-picture">
+                            <source srcset="./RESIMLER/logo-hilal-amblem-sm.avif" type="image/avif">
+                            <source srcset="./RESIMLER/logo-hilal-amblem-sm.webp" type="image/webp">
+                            <img src="./RESIMLER/logo-hilal-amblem.png" alt="" aria-hidden="true" class="emblem-img"
+                                width="44" height="44" decoding="async">
+                        </picture>
                     </div>
-                    
-                    <!-- Ana amblem -->
-                    <div class="emblem-circle">
-                        <div class="emblem-text">HLL</div>
-                        <div class="emblem-arc"></div>
-                        <!-- Parçalanma efektleri -->
-                        <div class="fragments">
-                            <div class="fragment fragment-1"></div>
-                            <div class="fragment fragment-2"></div>
-                            <div class="fragment fragment-3"></div>
-                            <div class="fragment fragment-4"></div>
-                        </div>
+                    <div class="logo-brand">
+                        <span class="brand-title">HİLAL <strong>Teknik</strong></span>
                     </div>
-                </div>
-                <h1>HİLAL <span>Teknik</span></h1>
+                </a>
             </div>
-            <nav>
-                <!-- Sabit navigasyon -->
-                <div class="nav-items">
-                    <a href="index.html" class="nav-item" data-page="index">ANASAYFA</a>
-                    <a href="hakkimizda.html" class="nav-item" data-page="hakkimizda">HAKKIMIZDA</a>
-                    <a href="galeri.html" class="nav-item" data-page="galeri">GALERİ</a>
-                    <a href="iletisim.html" class="nav-item nav-item--large" data-page="iletisim">İLETİŞİM</a>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menüyü Aç/Kapat" aria-expanded="false"
+                aria-controls="mainNav">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <div class="nav-cluster nav-cluster--right">
+                <nav class="desktop-nav" id="mainNav" aria-label="Ana Menü">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link" data-page="index">ANASAYFA</a></li>
+                        <li><a href="hakkimizda.html" class="nav-link" data-page="hakkimizda">HAKKIMIZDA</a></li>
+                        <li><a href="hizmetlerimiz.html" class="nav-link" data-page="hizmetlerimiz">HİZMETLERİMİZ</a>
+                        </li>
+                        <li><a href="galeri.html" class="nav-link" data-page="galeri">GALERİ</a></li>
+                        <li><a href="iletisim.html" class="nav-link active" data-page="iletisim">İLETİŞİM</a></li>
+                    </ul>
+                </nav>
+                <div class="nav-contact-actions" role="group" aria-label="Hızlı İletişim">
+                    <a href="tel:05376074817" class="nav-action-btn nav-action-btn--phone" aria-label="Telefonla ara"
+                        title="Hemen Arayın: 0537 607 48 17">
+                        <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://wa.me/905376074817" class="nav-action-btn nav-action-btn--whatsapp" target="_blank"
+                        rel="noopener noreferrer" aria-label="WhatsApp üzerinden iletişim kur"
+                        title="WhatsApp Canlı Destek">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                    </a>
                 </div>
-            </nav>
+            </div>
         </div>
     </header>
 
-    <!-- ==================== CONTACT ACTION BAR ==================== -->
-    <section class="contact-action-bar">
-        <div class="container">
-            <div class="contact-actions">
-                <a href="tel:05376074817" class="action-btn action-btn--phone">
-                    <i class="fas fa-phone"></i>
-                    <span>Telefon</span>
-                </a>
-                <a href="https://wa.me/905376074817" class="action-btn action-btn--whatsapp">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>WhatsApp</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
     <main>
 
-    <!-- ==================== CONTACT HERO SECTION ==================== -->
-    <section class="contact-hero-section section section--comfort with-header-offset">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Bizimle <span class="highlight">İletişime Geçin</span></h1>
-                <p class="hero-subtitle">Kombi sorunlarınız için 7/24 hizmetinizdeyiz. Hemen arayın veya mesaj gönderin!</p>
+        <!-- ==================== CONTACT HERO SECTION ==================== -->
+        <section class="contact-hero-section section section--comfort with-header-offset">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Bizimle <span class="highlight">İletişime Geçin</span></h1>
+                    <p class="hero-subtitle">Kombi arıza, bakım ve montaj talepleriniz için 7/24 hizmetinizdeyiz.</p>
+                    <a href="#iletisimBilgileri" class="hero-scroll-cue"
+                        aria-label="Harita Konumu ve İletişim Detayları">
+                        <span class="scroll-cue-text">Harita Konumu &amp; İletişim Detayları</span>
+                        <span class="mouse-scroll-indicator" aria-hidden="true">
+                            <span class="mouse-wheel"></span>
+                        </span>
+                    </a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ==================== CONTACT INFORMATION ==================== -->
-    <section class="contact-info-section section section--white">
-        <div class="container">
-            <h2 class="section-title">İletişim Bilgilerimiz</h2>
-            <p class="section-subtitle">7/24 hizmetinizdeyiz. Hemen iletişime geçin!</p>
-            
-            <div class="contact-grid">
-                <div class="contact-item primary">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>Telefon</h3>
-                        <p class="contact-value">0537 607 48 17</p>
-                        <p class="contact-desc">7/24 hizmetinizdeyiz</p>
-                        <a href="tel:05376074817" class="contact-link">
+        <!-- ==================== CONTACT INFORMATION ==================== -->
+        <section class="contact-info-section section section--white" id="iletisimBilgileri">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">İletişim Bilgilerimiz</h2>
+                    <p class="section-subtitle">7/24 hizmetinizdeyiz. Hemen iletişime geçin!</p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-item primary">
+                        <div class="contact-icon">
                             <i class="fas fa-phone"></i>
-                            Hemen Ara
-                        </a>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Telefon</h3>
+                            <p class="contact-value cfg-phone-display">0537 607 48 17</p>
+                            <p class="contact-desc cfg-working-hours-display">7/24 kesintisiz acil servis</p>
+                            <a href="tel:05376074817" class="contact-link">
+                                <i class="fas fa-phone"></i>
+                                Hemen Ara
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item accent">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>WhatsApp</h3>
+                            <p class="contact-value cfg-whatsapp-display">0537 607 48 17</p>
+                            <p class="contact-desc">Hızlı mesaj ve arıza görseli gönderin</p>
+                            <a href="https://wa.me/905376074817" class="contact-link">
+                                <i class="fab fa-whatsapp"></i>
+                                Mesaj Gönder
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item secondary">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Adres</h3>
+                            <p class="contact-value cfg-address-display">Paşaköşkü Mah. İsmet Paşa Cad. No:44,
+                                Battalgazi / Malatya</p>
+                            <p class="contact-desc cfg-service-areas-display">Malatya Merkez, Battalgazi, Yeşilyurt ve
+                                Tüm İlçeler</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item info">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Çalışma Saatleri</h3>
+                            <p class="contact-value cfg-working-hours-display">7/24 Kesintisiz Hizmet</p>
+                            <p class="contact-desc cfg-contact-desc-display">Acil kombi arıza ve montaj talepleriniz
+                                için 7/24 hizmetinizdeyiz.</p>
+                            <span class="status-badge online">Çevrimiçi</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item success">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Kurumsal E-posta</h3>
+                            <p class="contact-value cfg-email-display">osman_tari@hotmail.com</p>
+                            <p class="contact-desc">Fatura ve kurumsal yazışmalar</p>
+                            <a href="mailto:osman_tari@hotmail.com" class="contact-link">
+                                <i class="fas fa-envelope"></i>
+                                E-posta Gönder
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item warning" id="siteTasarimcisi">
+                        <div class="contact-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Site Tasarımcısı</h3>
+                            <p class="contact-value">Harun Alan</p>
+                            <p class="contact-desc">Web tasarım, geliştirme ve proje danışmanlığı için benimle iletişime
+                                geçin</p>
+                            <a href="mailto:harun.aln12@gmail.com" class="contact-link">
+                                <i class="fas fa-envelope"></i>
+                                E-posta Gönder
+                            </a>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="contact-item accent">
-                    <div class="contact-icon">
-                        <i class="fab fa-whatsapp"></i>
+            </div>
+        </section>
+
+        <!-- ==================== GOOGLE HARİTA & KONUM SECTION ==================== -->
+        <section class="contact-map-section section" id="haritaSection" aria-label="Hilal Teknik Konum ve Harita">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Konumumuz</h2>
+                </div>
+
+                <!-- Harita Dışındaki Net Bilgi Kartı (Sadece Adres & Yol Tarifi Al) -->
+                <div class="map-external-info-wrapper">
+                    <div class="map-external-info-card">
+                        <p class="map-info-address cfg-address-display">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i> Paşaköşkü Mah. İsmet Paşa Cad.
+                            No:44,
+                            Battalgazi / Malatya
+                        </p>
+                        <div class="map-info-actions">
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=38.3496355,38.3183457"
+                                target="_blank" rel="noopener noreferrer"
+                                class="btn-map-action btn-map-action--dir cfg-map-directions-link"
+                                title="Google Haritalar Yol Tarifi">
+                                <i class="fas fa-directions" aria-hidden="true"></i> Yol Tarifi Al
+                            </a>
+                        </div>
                     </div>
-                    <div class="contact-details">
+                </div>
+
+                <div class="map-card-wrapper">
+                    <!-- İnteraktif Harita (Mavimsi Hilal Teknik Amblemli Özel İğne Marker) -->
+                    <div id="contactInteractiveMap" class="contact-interactive-map"
+                        aria-label="Hilal Teknik İnteraktif Konum Haritası">
+                        <noscript>
+                            <iframe id="noscriptContactMapIframe" class="contact-map-iframe"
+                                src="https://maps.google.com/maps?q=Pa%C5%9Fak%C3%B6%C5%9Fk%C3%BC+Mah.+%C4%B0smet+Pa%C5%9Fa+Cad.+No:44,+Battalgazi+/+Malatya&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                                width="100%" height="480" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Hilal Teknik Malatya Konum ve Ulaşım Haritası">
+                            </iframe>
+                        </noscript>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SOCIAL MEDIA SECTION ==================== -->
+        <section class="social-section section section--comfort">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Sosyal Medyada Takip Edin</h2>
+                </div>
+                <div class="social-grid">
+                    <div class="social-card facebook">
+                        <div class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <h3>Facebook</h3>
+                        <p>Güncel hizmetlerimizi ve referanslarımızı takip edin</p>
+                        <a href="https://www.facebook.com/hilal.teknik.tesisat.malatya" target="_blank"
+                            class="social-btn">
+                            <i class="fab fa-facebook-f"></i>
+                            Takip Et
+                        </a>
+                    </div>
+
+                    <div class="social-card instagram">
+                        <div class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <h3>Instagram</h3>
+                        <p>Çalışmalarımızdan anlık görüntüler</p>
+                        <a href="https://www.instagram.com/hilal_teknik_malatya" target="_blank" class="social-btn">
+                            <i class="fab fa-instagram"></i>
+                            Takip Et
+                        </a>
+                    </div>
+
+                    <div class="social-card whatsapp">
+                        <div class="social-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
                         <h3>WhatsApp</h3>
-                        <p class="contact-value">0537 607 48 17</p>
-                        <p class="contact-desc">Hızlı mesaj gönderin</p>
-                        <a href="https://wa.me/905376074817" class="contact-link">
+                        <p>Hızlı iletişim için WhatsApp'tan yazın</p>
+                        <a href="https://wa.me/905376074817" target="_blank" class="social-btn">
                             <i class="fab fa-whatsapp"></i>
                             Mesaj Gönder
                         </a>
                     </div>
                 </div>
-                
-                <div class="contact-item secondary">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>Adres</h3>
-                        <p class="contact-value">Uçbağlar Mah. Kitap Sok. No:10 Battalgazi, Malatya</p>
-                        <p class="contact-desc">Tüm Malatya'ya hizmet</p>
-                        <div class="service-areas">
-
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-item info">
-                    <div class="contact-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>Çalışma Saatleri</h3>
-                        <p class="contact-value">7/24 Hizmet</p>
-                        <p class="contact-desc">Acil durumlar için</p>
-                        <span class="status-badge online">Çevrimiçi</span>
-                    </div>
-                </div>
-
-                <div class="contact-item success">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>E-posta</h3>
-                        <p class="contact-value">osman_tari@hotmail.com</p>
-                        <p class="contact-desc">Detaylı bilgi için yazın</p>
-                        <a href="mailto:info@hilalteknik.com" class="contact-link">
-                            <i class="fas fa-envelope"></i>
-                            E-posta Gönder
-                        </a>
-                    </div>
-                </div>
-
-                <div class="contact-item warning">
-                    <div class="contact-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>Site Tasarımcısı</h3>
-                        <p class="contact-value">Harun Alan</p>
-                        <p class="contact-desc">Web tasarım ve geliştirme</p>
-                        <a href="mailto:harun.aln12@gmail.com" class="contact-link">
-                            <i class="fas fa-envelope"></i>
-                            E-posta Gönder
-                        </a>
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- ==================== SOCIAL MEDIA SECTION ==================== -->
-    <section class="social-section section section--comfort">
-        <div class="container">
-            <h2 class="section-title">Sosyal Medyada Takip Edin</h2>
-            <div class="social-grid">
-                <div class="social-card facebook">
-                    <div class="social-icon">
-                        <i class="fab fa-facebook-f"></i>
-                    </div>
-                    <h3>Facebook</h3>
-                    <p>Güncel hizmetlerimizi ve referanslarımızı takip edin</p>
-                    <a href="https://www.facebook.com/hilal.teknik.tesisat.malatya" target="_blank" class="social-btn">
-                        <i class="fab fa-facebook-f"></i>
-                        Takip Et
-                    </a>
-                </div>
-                
-                <div class="social-card instagram">
-                    <div class="social-icon">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                    <h3>Instagram</h3>
-                    <p>Çalışmalarımızdan anlık görüntüler</p>
-                    <a href="https://www.instagram.com/hilal_teknik_malatya" target="_blank" class="social-btn">
-                        <i class="fab fa-instagram"></i>
-                        Takip Et
-                    </a>
-                </div>
-                
-                <div class="social-card whatsapp">
-                    <div class="social-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <h3>WhatsApp</h3>
-                    <p>Hızlı iletişim için WhatsApp'tan yazın</p>
-                    <a href="https://wa.me/905376074817" target="_blank" class="social-btn">
-                        <i class="fab fa-whatsapp"></i>
-                        Mesaj Gönder
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
+        </section>
+    </main>
 
     <!-- ==================== FOOTER ==================== -->
     <footer>
@@ -267,13 +387,24 @@
                 <div class="footer-logo">
                     <h2>HİLAL <span>Teknik</span></h2>
                     <p>25 yılı aşkın tecrübesiyle Malatya'da hizmetinizde</p>
-                    <p class="footer-owner">Sahibi: Osman Tari</p>
+                    <div class="footer-owner-dev-group">
+                        <span class="footer-owner">
+                            <i class="fas fa-user-tie" aria-hidden="true"></i>
+                            <span>İşletme Sahibi: Osman Tari</span>
+                        </span>
+                        <a href="#siteTasarimcisi" class="footer-dev-badge"
+                            title="Web Tasarım & Geliştirme: Harun Alan">
+                            <i class="fas fa-code" aria-hidden="true"></i>
+                            <span>Tasarlayan & Geliştiren: Harun Alan</span>
+                        </a>
+                    </div>
                 </div>
                 <div class="footer-links">
                     <h3>Hızlı Linkler</h3>
                     <ul>
                         <li><a href="index.html">Anasayfa</a></li>
                         <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                        <li><a href="hizmetlerimiz.html">Hizmetlerimiz</a></li>
                         <li><a href="galeri.html">Galeri</a></li>
                         <li><a href="iletisim.html">İletişim</a></li>
                     </ul>
@@ -281,9 +412,14 @@
                 <div class="footer-social">
                     <h3>Sosyal Medya</h3>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/hilal.teknik.tesisat.malatya" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/hilal_teknik_malatya" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/905376074817" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/hilal.teknik.tesisat.malatya" target="_blank"
+                            rel="noopener noreferrer" aria-label="Facebook Sayfamız"><i class="fab fa-facebook-f"
+                                aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/hilal_teknik_malatya" target="_blank"
+                            rel="noopener noreferrer" aria-label="Instagram Sayfamız"><i class="fab fa-instagram"
+                                aria-hidden="true"></i></a>
+                        <a href="https://wa.me/905376074817" target="_blank" rel="noopener noreferrer"
+                            aria-label="WhatsApp Sohbeti"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
@@ -293,122 +429,140 @@
         </div>
     </footer>
 
-    <!-- ==================== SCROLL EFFECTS JAVASCRIPT ==================== -->
-    <script>
-        // Contact action bar scroll behavior
-        let lastScrollTop = 0;
-        const contactActionBar = document.querySelector('.contact-action-bar');
-
-        window.addEventListener('scroll', function() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // Scrolling down - move contact action bar to top
-            if (scrollTop > lastScrollTop && scrollTop > 80) {
-                contactActionBar.classList.add('action-bar-top');
-            }
-            // Scrolling up - keep bar at top until reaching original position
-            else if (scrollTop < lastScrollTop) {
-                // Only move bar back when reaching original position (128px desktop, 108px mobile)
-                const threshold = window.innerWidth <= 768 ? 108 : 128;
-                if (scrollTop <= threshold) {
-                    contactActionBar.classList.remove('action-bar-top');
-                }
-                // Above threshold, keep bar at top during upward scroll
-            }
-            // At very top - always show bar in original position
-            else if (scrollTop <= 80) {
-                contactActionBar.classList.remove('action-bar-top');
-            }
-            
-            lastScrollTop = scrollTop;
-        });
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-        
-        // Sabit navigasyon sistemi - aktif sayfa işaretleme
-        function setActiveNavItem() {
-            const currentPage = window.location.pathname;
-            const navItems = document.querySelectorAll('.nav-item');
-            
-            navItems.forEach(item => {
-                item.classList.remove('active');
-                const href = item.getAttribute('href');
-                
-                if (currentPage.includes('index.html') || currentPage === '/' || currentPage.endsWith('/')) {
-                    if (href === 'index.html') {
-                        item.classList.add('active');
-                    }
-                } else if (currentPage.includes('hakkimizda')) {
-                    if (href === 'hakkimizda.html') {
-                        item.classList.add('active');
-                    }
-                } else if (currentPage.includes('galeri')) {
-                    if (href === 'galeri.html') {
-                        item.classList.add('active');
-                    }
-                } else if (currentPage.includes('iletisim')) {
-                    if (href === 'iletisim.html') {
-                        item.classList.add('active');
-                    }
-                }
-            });
-        }
-        
-        // Sayfa yüklendiğinde aktif öğeyi işaretle
-        setActiveNavItem();
-    </script>
+    <!-- ==================== SAĞ ALT SABİT İLETİŞİM BUTONLARI ==================== -->
+    <aside class="floating-contact-actions" aria-label="Hızlı İletişim">
+        <a href="https://wa.me/905376074817" class="floating-btn floating-btn--whatsapp" target="_blank"
+            rel="noopener noreferrer" title="WhatsApp Canlı Destek" aria-label="WhatsApp İle İletişime Geçin">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            <span class="floating-btn-text">WhatsApp</span>
+        </a>
+        <a href="tel:05376074817" class="floating-btn floating-btn--phone" title="Hemen Arayın: 0537 607 48 17"
+            aria-label="Telefon İle Hemen Arayın">
+            <i class="fas fa-phone-alt" aria-hidden="true"></i>
+            <span class="floating-btn-text">0537 607 48 17</span>
+        </a>
+    </aside>
 
     <!-- ==================== YUKARI ÇIKMA BUTONU ==================== -->
     <button id="scrollToTop" class="scroll-to-top" aria-label="Yukarı çık">
-        <i class="fas fa-arrow-up"></i>
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 
+    <!-- ==================== MERKEZİ YAPILANDIRMA VE DİNAMİK SENKRONİZASYON ==================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" defer></script>
+    <script src="site-config.min.js" defer></script>
+    <script src="analytics.min.js" defer></script>
+
+    <!-- ==================== NAVİGASYON & HARİTA SCRIPT ==================== -->
     <script>
-        // Header scroll hide and sticky bar move to top
-        const header = document.querySelector('header');
-        const stickyCallBar = document.querySelector('.sticky-call-bar');
-        
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 100) {
-                header.classList.add('header-hidden');
-                stickyCallBar.classList.add('bar-top');
-            } else {
-                header.classList.remove('header-hidden');
-                stickyCallBar.classList.remove('bar-top');
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // ==================== HİLAL TEKNİK İNTERAKTİF HARİTA (MAVİMSİ AMBLEMLİ ÖZEL İĞNE) ====================
+            function initHilalContactMap() {
+                const mapEl = document.getElementById('contactInteractiveMap');
+                if (!mapEl) return;
+
+                // Hilal Teknik Paşaköşkü Mah. Battalgazi / Malatya Koordinatları
+                let lat = 38.3496355;
+                let lng = 38.3183457;
+
+                // site-config'ten varsa koordinat ayıkla
+                if (window.HilalConfig) {
+                    const cfg = window.HilalConfig.getConfig();
+                    if (cfg && cfg.mapEmbedUrl) {
+                        const coords = parseMapCoordinates(cfg.mapEmbedUrl);
+                        if (coords) {
+                            lat = coords.lat;
+                            lng = coords.lng;
+                        }
+                    }
+                }
+
+                if (typeof L === 'undefined') {
+                    mapEl.innerHTML = `
+                        <iframe id="contactMapIframe" class="contact-map-iframe" 
+                            src="https://maps.google.com/maps?q=${lat},${lng}&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    `;
+                    return;
+                }
+
+                try {
+                    const map = L.map('contactInteractiveMap', {
+                        center: [lat, lng],
+                        zoom: 16,
+                        scrollWheelZoom: false,
+                        zoomControl: true
+                    });
+
+                    // Esri World Street Map (Yüksek hızlı, net sokak detayları, API Key GEREKTİRMEZ)
+                    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+                        attribution: '&copy; <a href="https://www.esri.com/" target="_blank" rel="noopener">Esri</a> &copy; OpenStreetMap',
+                        maxZoom: 19
+                    }).addTo(map);
+
+                    // Sitedeki kurumsal mavimsi renk (#0284c7) ve Hilal amblemli özel marker pin
+                    const hilalCustomIcon = L.divIcon({
+                        className: 'hilal-map-marker-container',
+                        html: `
+                            <div class="hilal-custom-pin" title="Hilal Teknik Servis Noktası">
+                                <div class="pin-pulse"></div>
+                                <div class="pin-circle">
+                                    <img src="./RESIMLER/logo-hilal-amblem.png" alt="Hilal Teknik Logo" class="pin-emblem" width="24" height="24">
+                                </div>
+                                <div class="pin-pointer"></div>
+                            </div>
+                        `,
+                        iconSize: [48, 56],
+                        iconAnchor: [24, 54],
+                        popupAnchor: [0, -50]
+                    });
+
+                    const marker = L.marker([lat, lng], { icon: hilalCustomIcon }).addTo(map);
+
+                    const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+                    const popupHtml = `
+                        <div class="hilal-map-mini-popup">
+                            <img src="./RESIMLER/logo-hilal-amblem.png" alt="Hilal Teknik Logo" class="mini-popup-emblem" width="24" height="24">
+                            <span class="mini-popup-name">Hilal Teknik</span>
+                            <a href="${directionsUrl}" target="_blank" rel="noopener noreferrer" class="mini-popup-dir-btn cfg-map-directions-link">
+                                <i class="fas fa-directions" aria-hidden="true"></i> Yol Tarifi Al
+                            </a>
+                        </div>
+                    `;
+
+                    marker.bindPopup(popupHtml, {
+                        maxWidth: 240,
+                        minWidth: 150,
+                        className: 'hilal-leaflet-popup hilal-leaflet-mini-popup',
+                        autoClose: false,
+                        closeButton: false,
+                        offset: [0, -10]
+                    }).openPopup();
+
+                    window.HilalMap = map;
+                    window.HilalMarker = marker;
+
+                    setTimeout(() => { map.invalidateSize(); }, 350);
+                } catch (e) {
+                    console.warn('Leaflet map error, falling back:', e);
+                }
             }
-        });
-        
-        // Yukarı çıkma butonu
-        const scrollToTopBtn = document.getElementById('scrollToTop');
-        
-        // Sayfa kaydırıldığında butonu göster/gizle
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                scrollToTopBtn.classList.add('show');
-            } else {
-                scrollToTopBtn.classList.remove('show');
+
+            function parseMapCoordinates(url) {
+                if (!url) return null;
+                const pbMatch = url.match(/!2d([0-9.]+)!3d([0-9.]+)/);
+                if (pbMatch) return { lat: parseFloat(pbMatch[2]), lng: parseFloat(pbMatch[1]) };
+                const atMatch = url.match(/@([0-9.]+),([0-9.]+)/);
+                if (atMatch) return { lat: parseFloat(atMatch[1]), lng: parseFloat(atMatch[2]) };
+                const qMatch = url.match(/(?:q|ll)=([0-9.]+),([0-9.]+)/);
+                if (qMatch) return { lat: parseFloat(qMatch[1]), lng: parseFloat(qMatch[2]) };
+                return null;
             }
-        });
-        
-        // Butona tıklandığında yukarı çık
-        scrollToTopBtn.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+
+            initHilalContactMap();
         });
     </script>
 </body>
-</html> 
+
+</html>
