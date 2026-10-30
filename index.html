@@ -79,11 +79,10 @@
     <title>Malatya Kombi Servisi | Hilal Teknik - Osman Tari | Vaillant, Bosch, Buderus Servis</title>
 
     <!-- ==================== LCP & KRİTİK GÖRSEL ÖN YÜKLEME ==================== -->
-    <link rel="preload" as="image" href="RESIMLER/hero-petek-temizligi-600w.avif" type="image/avif" fetchpriority="high" media="(max-width: 768px)">
-    <link rel="preload" as="image" href="RESIMLER/hero-petek-temizligi.avif" type="image/avif" fetchpriority="high" media="(min-width: 769px)">
-    <link rel="preload" as="image" href="RESIMLER/logo-hilal-amblem-sm.avif" type="image/avif">
-    <link rel="preload" as="font" type="font/woff2"
-        href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2" crossorigin>
+    <link rel="preload" as="image" type="image/avif"
+        imagesrcset="RESIMLER/hero-petek-temizligi-600w.avif 600w, RESIMLER/hero-petek-temizligi.avif 1200w"
+        imagesizes="(max-width: 768px) 92vw, (max-width: 992px) 440px, 580px"
+        fetchpriority="high">
 
     <!-- ==================== ERKEN BAĞLANTI (PRECONNECT) ==================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -110,10 +109,10 @@
     </noscript>
 
     <!-- Yerel İkon Paketi (CDN bağımlılığı ve render-blocking kaldırıldı) -->
-    <link rel="stylesheet" href="icons.min.css?v=20261026_opt4">
+    <link rel="stylesheet" href="icons.min.css?v=20261030_perf">
 
     <!-- Ana Stil Dosyası -->
-    <link rel="stylesheet" href="style.min.css?v=20261026_opt5">
+    <link rel="stylesheet" href="style.min.css?v=20261030_perf">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -238,7 +237,7 @@
                                 role="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="quoteDrawer"
                                 data-open-drawer="quote">
                                 <i class="fas fa-calendar-alt"></i>
-                                <span>Online Servis Randevusu Al</span>
+                                <span>Randevu Al</span>
                                 <i class="fas fa-arrow-right"></i>
                             </a>
                             <a href="hizmetlerimiz.html" class="btn hero-mob-secondary-btn hero-pc-secondary-btn" id="heroServicesBtn">
@@ -286,7 +285,7 @@
                                 <div class="pc-img-box pc-img-box--main">
                                     <picture>
                                         <source type="image/avif" srcset="RESIMLER/hero-petek-temizligi-600w.avif 600w, RESIMLER/hero-petek-temizligi.avif 1200w" sizes="(max-width: 768px) 92vw, (max-width: 992px) 440px, 580px">
-                                        <source type="image/webp" srcset="RESIMLER/hero-petek-temizligi-600w.webp 600w, RESIMLER/hero-petek-temizligi.webp 1200w" sizes="(max-width: 768px) 92vw, (max-width: 992px) 440px, 580px">
+                                        <source type="image/webp" srcset="RESIMLER/hero-petek-temizligi-600w.webp 600w, RESIMLER/hero-petek-temizligi-800w.webp 800w, RESIMLER/hero-petek-temizligi.webp 1200w" sizes="(max-width: 768px) 92vw, (max-width: 992px) 440px, 580px">
                                         <img src="RESIMLER/hero-petek-temizligi.jpg"
                                             alt="Malatya Kalorifer Petek Temizlik ve Tesisat" width="580"
                                             height="380" loading="eager" fetchpriority="high" decoding="async">
@@ -301,7 +300,7 @@
                                 <div class="pc-img-box pc-img-box--overlap">
                                     <picture>
                                         <source type="image/avif" srcset="RESIMLER/hero-kombi-bakim-onarim-500w.avif 500w, RESIMLER/hero-kombi-bakim-onarim.avif 896w" sizes="(max-width: 768px) 65vw, (max-width: 992px) 360px, 460px">
-                                        <source type="image/webp" srcset="RESIMLER/hero-kombi-bakim-onarim-500w.webp 500w, RESIMLER/hero-kombi-bakim-onarim.webp 896w" sizes="(max-width: 768px) 65vw, (max-width: 992px) 360px, 460px">
+                                        <source type="image/webp" srcset="RESIMLER/hero-kombi-bakim-onarim-500w.webp 500w, RESIMLER/hero-kombi-bakim-onarim-800w.webp 800w, RESIMLER/hero-kombi-bakim-onarim.webp 896w" sizes="(max-width: 768px) 65vw, (max-width: 992px) 360px, 460px">
                                         <img src="RESIMLER/hero-kombi-bakim-onarim.jpg"
                                             alt="Malatya Kombi Bakım Onarım ve Servisi" width="460" height="320"
                                             loading="eager" decoding="async">
@@ -371,16 +370,16 @@
 
                 <!-- Alt Bölüm: Hizmet Verdiğimiz Markalar Kartı (Genişletilebilir) -->
                 <div class="hero-brands-showcase js-brands-card" id="mobBrandsCard" role="region" aria-labelledby="mobBrandsTitle">
-                    <div class="brands-header">
+                    <div class="brands-header" id="mobBrandsToggle" role="button" tabindex="0"
+                        aria-expanded="false" aria-controls="mobBrandsPills" aria-label="Markalar listesini aç veya kapat">
                         <div class="brands-header-left">
-                            <i class="fas fa-wrench" aria-hidden="true"></i>
+                            <span class="brands-header-icon"><i class="fas fa-wrench" aria-hidden="true"></i></span>
                             <span id="mobBrandsTitle">Hizmet Verdiğimiz Markalar</span>
                         </div>
-                        <button type="button" class="brands-expand-badge js-brands-toggle" id="mobBrandsToggle"
-                            aria-expanded="false" aria-controls="mobBrandsPills">
+                        <div class="brands-expand-badge">
                             <span class="expand-text">+12 Marka</span>
                             <i class="fas fa-chevron-down expand-chevron" aria-hidden="true"></i>
-                        </button>
+                        </div>
                     </div>
                     <div class="brands-pills-wrap" id="mobBrandsPills">
                         <span class="brand-chip brand-chip--featured">Vaillant</span>
@@ -752,37 +751,44 @@
             });
 
             // ==================== HİZMET VERDİĞİMİZ MARKALAR KART GENİŞLEME / DARALMA ====================
-            const brandsCards = document.querySelectorAll('.js-brands-card');
-            brandsCards.forEach(card => {
-                function toggleBrandCard(e) {
-                    // Eğer tıklanan eleman bir link ise varsayılan davranışı bozma
-                    if (e.target.closest('a')) return;
+            (function () {
+                const card = document.getElementById('mobBrandsCard');
+                const toggleHeader = document.getElementById('mobBrandsToggle');
+                if (!card || !toggleHeader) return;
+
+                let isToggling = false;
+
+                function toggleBrands(e) {
+                    if (e) {
+                        // Marka çipine tıklanmışsa kartı kapatma
+                        if (e.target && (e.target.closest('a') || e.target.closest('.brand-chip'))) return;
+                        e.preventDefault();
+                    }
+
+                    // Hızlı hızlı ardışık tetiklenmeyi engelleyen 300ms kilit (debounce)
+                    if (isToggling) return;
+                    isToggling = true;
+                    setTimeout(() => {
+                        isToggling = false;
+                    }, 300);
 
                     const isExpanded = card.classList.toggle('is-expanded');
                     card.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
-                    const toggleBtn = card.querySelector('.js-brands-toggle');
-                    if (toggleBtn) {
-                        toggleBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
-                    }
+                    toggleHeader.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
 
                     const badgeText = card.querySelector('.expand-text');
                     if (badgeText) {
-                        if (card.id === 'mobBrandsCard') {
-                            badgeText.textContent = isExpanded ? 'Daha Az' : '+12 Marka';
-                        } else {
-                            badgeText.textContent = isExpanded ? 'Daha Az Göster' : '+12 Marka Daha';
-                        }
+                        badgeText.textContent = isExpanded ? 'Daha Az Göster' : '+12 Marka';
                     }
                 }
 
-                card.addEventListener('click', toggleBrandCard);
-                card.addEventListener('keydown', function (e) {
+                toggleHeader.addEventListener('click', toggleBrands);
+                toggleHeader.addEventListener('keydown', function (e) {
                     if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        toggleBrandCard(e);
+                        toggleBrands(e);
                     }
                 });
-            });
+            })();
         });
     </script>
 

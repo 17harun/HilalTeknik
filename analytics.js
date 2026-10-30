@@ -46,6 +46,13 @@
                 window.plausible(eventName, { props: payload });
             } catch (e) { }
         }
+
+        // 4. Microsoft Clarity (if script loaded)
+        if (typeof window.clarity === 'function') {
+            try {
+                window.clarity('event', eventName);
+            } catch (e) { }
+        }
     }
 
     // Main event tracking function
@@ -89,9 +96,14 @@
                 page_path: pathname
             });
         } else if (eventType === 'pageview') {
-            dispatchExternalAnalytics('page_view', {
-                page_path: pathname
-            });
+            // Note: window.gtag('config') in <head> already sends native page_view automatically.
+            // Dispatch only to secondary trackers (Umami / Plausible) to eliminate double-counting in GA4.
+            if (window.umami && typeof window.umami.track === 'function') {
+                try { window.umami.track('page_view', { page_path: pathname }); } catch (e) { }
+            }
+            if (typeof window.plausible === 'function') {
+                try { window.plausible('page_view', { props: { page_path: pathname } }); } catch (e) { }
+            }
         }
 
         // 2. Client-side local daily history for offline/in-browser resilience

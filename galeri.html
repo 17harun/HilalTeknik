@@ -92,7 +92,7 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
     <link rel="preload" as="image" href="RESIMLER/arka-plan-hilal-ambient.webp">
-    <link rel="stylesheet" href="style.min.css?v=20261026_opt5">
+    <link rel="stylesheet" href="style.min.css?v=20261028_galeri_feat">
     <link rel="stylesheet" href="icons.min.css?v=20261026_opt3">
     <script type="application/ld+json">
     {
@@ -169,17 +169,28 @@
                 </div>
 
                 <!-- Gallery Categories -->
-                <div class="gallery-categories">
-                    <button class="category-btn active" data-category="all">Tümü</button>
-                    <button class="category-btn" data-category="kombi-kurulum">Kombi Kurulum</button>
-                    <button class="category-btn" data-category="bakim-ariza">Bakım & Arıza</button>
+                <div class="gallery-categories" role="group" aria-label="Galeri Filtreleri">
+                    <button class="category-btn active" data-category="featured">
+                        <i class="fas fa-star" style="color: #f59e0b;" aria-hidden="true"></i>
+                        <span>Öne Çıkanlar</span>
+                    </button>
+                    <button class="category-btn" data-category="all">
+                        <span>Tümü</span>
+                    </button>
+                    <button class="category-btn" data-category="kombi-kurulum">
+                        <span>Kombi Kurulum</span>
+                    </button>
+                    <button class="category-btn" data-category="bakim-ariza">
+                        <span>Bakım & Arıza</span>
+                    </button>
                 </div>
 
                 <!-- Gallery Grid -->
                 <div class="gallery-grid">
                     <!-- Kombi Kurulum Kategorisi -->
-                    <div class="gallery-item" data-category="kombi-kurulum">
+                    <div class="gallery-item" data-category="kombi-kurulum" data-featured="true">
                         <div class="gallery-image">
+                            <span class="gallery-badge-featured"><i class="fas fa-star" aria-hidden="true"></i> Öne Çıkan</span>
                             <img src="RESIMLER/kombi_kurulum/IMG-20250812-WA0041.webp" alt="Kombi Kurulum Çalışması"
                                 width="300" height="250" decoding="async">
                             <div class="gallery-overlay">
@@ -195,8 +206,9 @@
                         </div>
                     </div>
 
-                    <div class="gallery-item" data-category="kombi-kurulum">
+                    <div class="gallery-item" data-category="kombi-kurulum" data-featured="true">
                         <div class="gallery-image">
+                            <span class="gallery-badge-featured"><i class="fas fa-star" aria-hidden="true"></i> Öne Çıkan</span>
                             <img src="RESIMLER/kombi_kurulum/IMG-20250812-WA0040.webp" alt="Kombi Montaj İşlemi"
                                 width="300" height="250" decoding="async">
                             <div class="gallery-overlay">
@@ -229,8 +241,9 @@
                         </div>
                     </div>
 
-                    <div class="gallery-item" data-category="kombi-kurulum">
+                    <div class="gallery-item" data-category="kombi-kurulum" data-featured="true">
                         <div class="gallery-image">
+                            <span class="gallery-badge-featured"><i class="fas fa-star" aria-hidden="true"></i> Öne Çıkan</span>
                             <img src="RESIMLER/kombi_kurulum/IMG-20250812-WA0024.webp" alt="Kombi Montaj Tamamlandı"
                                 width="300" height="250" loading="lazy" decoding="async">
                             <div class="gallery-overlay">
@@ -400,8 +413,9 @@
                     </div>
 
                     <!-- Bakım & Arıza Kategorisi -->
-                    <div class="gallery-item" data-category="bakim-ariza">
+                    <div class="gallery-item" data-category="bakim-ariza" data-featured="true">
                         <div class="gallery-image">
+                            <span class="gallery-badge-featured"><i class="fas fa-star" aria-hidden="true"></i> Öne Çıkan</span>
                             <img src="RESIMLER/bakim_ariza/IMG-20250812-WA0043.webp" alt="Kombi Bakım İşlemi"
                                 width="300" height="250" loading="lazy" decoding="async">
                             <div class="gallery-overlay">
@@ -417,8 +431,9 @@
                         </div>
                     </div>
 
-                    <div class="gallery-item" data-category="bakim-ariza">
+                    <div class="gallery-item" data-category="bakim-ariza" data-featured="true">
                         <div class="gallery-image">
+                            <span class="gallery-badge-featured"><i class="fas fa-star" aria-hidden="true"></i> Öne Çıkan</span>
                             <img src="RESIMLER/bakim_ariza/IMG-20250812-WA0042.webp" alt="Arıza Tespiti"
                                 width="300" height="250" loading="lazy" decoding="async">
                             <div class="gallery-overlay">
@@ -434,8 +449,9 @@
                         </div>
                     </div>
 
-                    <div class="gallery-item" data-category="bakim-ariza">
+                    <div class="gallery-item" data-category="bakim-ariza" data-featured="true">
                         <div class="gallery-image">
+                            <span class="gallery-badge-featured"><i class="fas fa-star" aria-hidden="true"></i> Öne Çıkan</span>
                             <img src="RESIMLER/bakim_ariza/IMG-20250812-WA0039.webp" alt="Kombi Onarım"
                                 width="300" height="250" loading="lazy" decoding="async">
                             <div class="gallery-overlay">
@@ -775,10 +791,31 @@
                 const categoryBtns = document.querySelectorAll('.category-btn');
                 const galleryItems = document.querySelectorAll('.gallery-item');
 
-                // Show all items initially
-                galleryItems.forEach(item => {
-                    item.classList.add('show');
-                });
+                function applyFilter(category) {
+                    galleryItems.forEach(item => {
+                        let match = false;
+                        if (category === 'all') {
+                            match = true;
+                        } else if (category === 'featured') {
+                            match = (item.getAttribute('data-featured') === 'true');
+                        } else {
+                            match = (item.getAttribute('data-category') === category);
+                        }
+
+                        if (match) {
+                            item.style.display = 'block';
+                            requestAnimationFrame(() => {
+                                item.classList.add('show');
+                            });
+                        } else {
+                            item.classList.remove('show');
+                            item.style.display = 'none';
+                        }
+                    });
+                }
+
+                // Initial state: Only show featured photos on page load
+                applyFilter('featured');
 
                 categoryBtns.forEach(btn => {
                     btn.addEventListener('click', function () {
@@ -789,19 +826,7 @@
                         this.classList.add('active');
 
                         // Filter items
-                        galleryItems.forEach(item => {
-                            if (category === 'all' || item.getAttribute('data-category') === category) {
-                                item.style.display = 'block';
-                                setTimeout(() => {
-                                    item.classList.add('show');
-                                }, 100);
-                            } else {
-                                item.classList.remove('show');
-                                setTimeout(() => {
-                                    item.style.display = 'none';
-                                }, 300);
-                            }
-                        });
+                        applyFilter(category);
                     });
                 });
             });

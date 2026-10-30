@@ -4902,33 +4902,80 @@ html[data-theme="light"] .scroll-to-top:hover {
 .gallery-categories {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin-bottom: 40px;
+    gap: 12px;
+    margin-bottom: 35px;
     flex-wrap: wrap;
 }
 
 .category-btn {
-    padding: 12px 24px;
-    border: 2px solid var(--border);
-    background: var(--surface);
-    color: var(--text-secondary);
-    border-radius: 25px;
-    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border: 1.5px solid rgba(203, 213, 225, 0.9);
+    background: rgba(255, 255, 255, 0.95);
+    color: #0f172a;
+    border-radius: 9999px;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.22s ease;
     font-size: 14px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 .category-btn:hover {
-    border-color: var(--secondary);
-    color: var(--secondary);
+    border-color: #0284c7;
+    color: #0284c7;
+    background: #ffffff;
     transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(2, 132, 199, 0.15);
 }
 
 .category-btn.active {
-    background: var(--secondary);
-    color: white;
-    border-color: var(--secondary);
+    background: #0284c7 !important;
+    color: #ffffff !important;
+    border-color: #0284c7 !important;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+}
+
+[data-theme="dark"] .category-btn {
+    background: rgba(30, 41, 59, 0.78);
+    border-color: rgba(255, 255, 255, 0.16);
+    color: #f1f5f9;
+}
+
+[data-theme="dark"] .category-btn:hover {
+    background: rgba(51, 65, 85, 0.9);
+    border-color: #38bdf8;
+    color: #38bdf8;
+}
+
+[data-theme="dark"] .category-btn.active {
+    background: #0284c7 !important;
+    border-color: #0284c7 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.45);
+}
+
+.gallery-badge-featured {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 3;
+    background: rgba(15, 23, 42, 0.88);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .gallery-grid {
@@ -6840,32 +6887,33 @@ html[data-theme="light"] .scroll-to-top:hover {
     color: #38bdf8;
 }
 
-/* Özel Servis Desteği - Hizmet Verdiğimiz Markalar Kartı (Mobil Genişletilebilir) */
+/* ==================== ÖZEL SERVİS DESTEĞİ - HİZMET VERDİĞİMİZ MARKALAR KARTI ==================== */
 .hero-brands-showcase {
-    background: rgba(255, 255, 255, 0.94);
-    border: 1px solid rgba(255, 255, 255, 0.98);
-    border-radius: 20px;
-    padding: 16px 16px 14px;
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid rgba(226, 232, 240, 0.9) !important;
+    border-radius: 20px !important;
+    padding: 16px 22px 16px !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
     backdrop-filter: blur(14px);
-    text-align: center;
-    cursor: pointer;
-    user-select: none;
-    transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    -webkit-backdrop-filter: blur(14px);
+    transition: box-shadow 0.25s ease, border-color 0.25s ease;
+    width: 100%;
+    max-width: 1060px;
+    margin: 22px auto 0 !important;
+    box-sizing: border-box;
 }
 
-.hero-brands-showcase:hover,
-.hero-brands-showcase:focus-visible {
-    border-color: rgba(2, 132, 199, 0.35);
-    box-shadow: 0 10px 28px rgba(2, 132, 199, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95);
-    outline: none;
+.hero-brands-showcase:hover {
+    border-color: rgba(2, 132, 199, 0.35) !important;
+    box-shadow: 0 14px 34px rgba(2, 132, 199, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
 }
 
 .hero-brands-showcase.is-expanded {
-    background: rgba(255, 255, 255, 0.98);
-    border-color: rgba(2, 132, 199, 0.4);
-    box-shadow: 0 14px 32px rgba(15, 23, 42, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.95);
-    padding: 18px 16px 16px;
+    background: rgba(255, 255, 255, 0.98) !important;
+    border-color: rgba(2, 132, 199, 0.45) !important;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+    padding: 16px 22px 18px !important;
+    border-radius: 20px !important;
 }
 
 .brands-header {
@@ -6874,40 +6922,60 @@ html[data-theme="light"] .scroll-to-top:hover {
     justify-content: space-between;
     width: 100%;
     margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+    user-select: none;
+    cursor: pointer;
 }
 
 .brands-header-left {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
+}
+
+.brands-header-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: #e0f2fe;
     color: #0284c7;
-    font-size: 13.5px;
-    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
 }
 
-.brands-header-left i {
-    font-size: 14px;
+.brands-header-left span,
+#mobBrandsTitle {
+    color: #0f172a !important;
+    font-size: 14.5px !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.2px;
 }
 
-.brands-header-left span {
-    color: #0f172a;
-}
-
-/* Genişletme Rozeti / Butonu */
 .brands-expand-badge {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    background: rgba(3, 105, 161, 0.08);
-    color: #0369a1;
-    border: 1px solid rgba(3, 105, 161, 0.22);
-    font-size: 11px;
-    font-weight: 700;
+    gap: 6px;
+    background: #0284c7 !important;
+    color: #ffffff !important;
+    border: none !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
     font-family: inherit;
-    padding: 3px 9px;
-    border-radius: 9999px;
+    padding: 6px 14px !important;
+    border-radius: 9999px !important;
     cursor: pointer;
-    transition: all 0.25s ease;
+    box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25) !important;
+    transition: all 0.2s ease;
+}
+
+.brands-expand-badge:hover {
+    background: #0369a1 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(2, 132, 199, 0.35) !important;
 }
 
 .expand-chevron {
@@ -6915,67 +6983,113 @@ html[data-theme="light"] .scroll-to-top:hover {
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hero-brands-showcase.is-expanded .expand-chevron,
-.hero-pc-brands-bar.is-expanded .expand-chevron {
+.hero-brands-showcase.is-expanded .expand-chevron {
     transform: rotate(180deg);
 }
 
-.hero-brands-showcase.is-expanded .brands-expand-badge,
-.hero-pc-brands-bar.is-expanded .brands-expand-badge {
-    background: #0369a1;
-    color: #ffffff;
-    border-color: #0369a1;
+.hero-brands-showcase.is-expanded .brands-expand-badge {
+    background: #0f172a !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.25) !important;
 }
 
+/* Izgara Düzeni (Grid Layout) */
 .brands-pills-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 7px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    width: 100%;
 }
 
 .brand-chip {
-    display: inline-block;
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    padding: 5px 12px;
-    border-radius: 9999px;
-    font-size: 11.5px;
-    font-weight: 600;
-    color: #334155;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
-    transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    height: 38px;
+    padding: 0 10px;
+    border-radius: 10px;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    color: #1e293b !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+    transition: all 0.2s ease;
+    text-align: center;
+    white-space: nowrap;
+    box-sizing: border-box;
 }
 
 .brand-chip:hover {
-    border-color: #0284c7;
-    color: #0284c7;
-    transform: translateY(-1px);
+    border-color: #0284c7 !important;
+    color: #0284c7 !important;
+    background: #f0f9ff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15) !important;
 }
 
-/* Varsayılan kapalı halde ek markaları gizle */
+/* Kapalı halde ek markaları gizle */
 .brand-chip--extra {
     display: none;
 }
 
-/* Kart açıldığında ek markaları animasyonla göster */
+/* Açıldığında 18 markayı düzgün ızgarada göster */
 .hero-brands-showcase.is-expanded .brand-chip--extra {
-    display: inline-block;
+    display: inline-flex;
     animation: chipFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-brands-showcase.is-expanded .brands-pills-wrap {
+    margin-top: 6px;
 }
 
 .brands-card-hint {
     display: none;
-    margin-top: 10px;
-    padding-top: 8px;
-    border-top: 1px dashed #e2e8f0;
-    color: #64748b;
-    font-size: 11px;
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px dashed #cbd5e1;
+    color: #475569 !important;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
 }
 
 .hero-brands-showcase.is-expanded .brands-card-hint {
     display: block;
     animation: chipFadeIn 0.3s ease forwards;
+}
+
+/* Mobil ve Tablet Izgara Düzenleri */
+@media (max-width: 991.98px) {
+    .hero-brands-showcase {
+        max-width: 100%;
+        margin-top: 16px !important;
+        padding: 14px 16px 12px !important;
+        border-radius: 18px !important;
+    }
+
+    .brands-header-left span,
+    #mobBrandsTitle {
+        font-size: 13.5px !important;
+    }
+
+    .brands-pills-wrap {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 6px !important;
+    }
+
+    .brand-chip {
+        height: 35px;
+        font-size: 12px !important;
+        padding: 0 6px;
+    }
+}
+
+@media (max-width: 420px) {
+    .brands-pills-wrap {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 6px !important;
+    }
 }
 
 @keyframes chipFadeIn {
@@ -7697,10 +7811,36 @@ html[data-theme="light"] .scroll-to-top:hover {
 }
 
 /* ==================== WCAG AA RENK KONTRASTI OPTİMİZASYONU ==================== */
-[data-theme="dark"] .section-title,
-[data-theme="dark"] .certifications h3,
-[data-theme="dark"] .about-content h3 {
-    color: #f8fafc;
+.section-title,
+[data-theme="dark"] .section-title {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.9) !important;
+}
+
+html[data-theme="light"] .section-title {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+    text-shadow: none !important;
+}
+
+.certifications h3,
+[data-theme="dark"] .certifications h3 {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95) !important;
+}
+
+html[data-theme="light"] .certifications h3 {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+    text-shadow: none !important;
+}
+
+.about-content h3,
+.timeline-card-header h3 {
+    color: #0f172a !important;
+    font-weight: 800 !important;
 }
 
 .value-card,
@@ -7783,61 +7923,87 @@ html[data-theme="light"] .scroll-to-top:hover {
     margin-bottom: 20px;
 }
 
-.hero-main-title {
-    font-size: clamp(24px, 3.2vw, 40px);
+/* Ana Başlık ve Açıklama Kartı (Glassmorphism Kartı) */
+.hero-title-wrap {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.98);
+    border-radius: 24px;
+    padding: 24px 26px;
+    box-shadow: 0 14px 36px rgba(15, 23, 42, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(16px);
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+[data-theme="dark"] .hero-title-wrap {
+    background: rgba(255, 255, 255, 0.96) !important;
+    border-color: rgba(255, 255, 255, 0.98) !important;
+    box-shadow: 0 14px 36px rgba(15, 23, 42, 0.07) !important;
+}
+
+.hero-title-wrap .hero-main-title {
+    font-size: clamp(24px, 3.2vw, 38px);
     line-height: 1.25;
     font-weight: 800;
-    color: #0f172a;
+    color: #0f172a !important;
     letter-spacing: -0.025em;
     margin: 0 0 14px 0;
 }
 
-[data-theme="dark"] .hero-main-title {
-    color: #f8fafc;
-}
-
-.hero-main-desc {
+.hero-title-wrap .hero-main-desc {
     font-size: clamp(13px, 1.2vw, 15px);
     line-height: 1.6;
-    color: #475569;
-    margin: 0 0 20px 0;
+    color: #334155 !important;
+    margin: 0;
     font-weight: 500;
 }
 
-[data-theme="dark"] .hero-main-desc {
-    color: #cbd5e1;
+.hero-title-wrap .hero-main-desc strong {
+    color: #0f172a !important;
+    font-weight: 700;
 }
 
-[data-theme="dark"] .hero-main-desc strong {
-    color: #f8fafc;
-}
-
+/* Buton Grubu - Randevu Al ve Hizmetlerimizi İncele Yan Yana (Üstteki Kart Genişliğinde) */
 .hero-unified-cta {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 22px;
-    width: 100%;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 14px !important;
+    margin-bottom: 20px;
+    width: 100% !important;
+    box-sizing: border-box !important;
 }
 
 .hero-unified-cta .hero-primary-cta {
-    width: auto;
-    display: inline-flex;
+    flex: 1.25 1 0 !important;
+    width: auto !important;
+    display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    padding: 13px 22px;
-    font-size: 14.5px;
+    gap: 10px;
+    height: 52px !important;
+    padding: 14px 20px !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
     white-space: nowrap;
+    box-sizing: border-box;
 }
 
 .hero-unified-cta .hero-pc-secondary-btn,
 .hero-unified-cta .hero-mob-secondary-btn {
-    width: auto;
-    display: inline-flex;
+    flex: 1 1 0 !important;
+    width: auto !important;
+    display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    padding: 13px 22px;
+    gap: 8px;
+    height: 52px !important;
+    padding: 14px 18px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
     white-space: nowrap;
+    box-sizing: border-box;
 }
 
 .mob-only-arrow {
@@ -7864,20 +8030,9 @@ html[data-theme="light"] .scroll-to-top:hover {
 
     .hero-title-wrap {
         order: 2;
-        background: rgba(255, 255, 255, 0.94);
-        border: 1px solid rgba(255, 255, 255, 0.98);
-        border-radius: 24px;
-        padding: 22px 18px;
-        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(16px);
-        margin-bottom: 16px;
+        padding: 20px 16px;
+        margin-bottom: 14px;
         text-align: center;
-    }
-
-    [data-theme="dark"] .hero-title-wrap {
-        background: rgba(255, 255, 255, 0.96);
-        border-color: rgba(255, 255, 255, 0.98);
-        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
     }
 
     .hero-unified-right {
@@ -7888,20 +8043,39 @@ html[data-theme="light"] .scroll-to-top:hover {
 
     .hero-unified-cta {
         order: 4;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 16px;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: stretch !important;
+        justify-content: space-between !important;
+        gap: 10px !important;
+        margin-bottom: 14px;
+        box-sizing: border-box !important;
     }
 
-    .hero-unified-cta .hero-primary-cta,
-    .hero-unified-cta .hero-mob-secondary-btn {
-        width: 100%;
+    .hero-unified-cta .hero-primary-cta {
+        flex: 1.25 1 0 !important;
+        width: auto !important;
+        height: 48px !important;
+        padding: 12px 10px !important;
+        font-size: 13.5px !important;
+        font-weight: 700 !important;
+        gap: 6px !important;
+        white-space: nowrap !important;
+        box-sizing: border-box !important;
     }
 
-    .mob-only-arrow {
-        display: inline-block !important;
+    .hero-unified-cta .hero-mob-secondary-btn,
+    .hero-unified-cta .hero-pc-secondary-btn {
+        flex: 1 1 0 !important;
+        width: auto !important;
+        height: 48px !important;
+        padding: 12px 8px !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        gap: 5px !important;
+        white-space: nowrap !important;
+        box-sizing: border-box !important;
     }
 
     .hero-trouble-card-unified {
@@ -7916,81 +8090,181 @@ html[data-theme="light"] .scroll-to-top:hover {
     }
 }
 
-/* ==================== WCAG AA KUSURSUZ RENK KONTRASTI (LIGHT & DARK TEMA) ==================== */
-/* 1. Koyu Tema Başlık ve Metin Kontrastları */
-[data-theme="dark"] .section-title,
-[data-theme="dark"] .certifications h3,
-[data-theme="dark"] .about-content h3,
-[data-theme="dark"] .trouble-header,
-[data-theme="dark"] .brands-header-left span,
-[data-theme="dark"] .pc-master-text strong {
-    color: #f8fafc !important;
+/* ==================== WCAG AA KUSURSUZ RENK KONTRASTI (HER İKİ TEMA İÇİN) ==================== */
+/* 1. Tüm Başlıklar ve Etiketler (Her Zaman Yüksek Kontrastlı Koyu Renk) */
+.section-title,
+[data-theme="dark"] .section-title {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.9) !important;
 }
 
-/* Kartların ve Çiplerin Asıl Beyaz Yüzeyleri (WCAG AA Kusursuz Okunabilirlik) */
+html[data-theme="light"] .section-title {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+    text-shadow: none !important;
+}
+
+.certifications h3,
+[data-theme="dark"] .certifications h3 {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95) !important;
+}
+
+html[data-theme="light"] .certifications h3 {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+    text-shadow: none !important;
+}
+
+.about-content h3,
+.timeline-card-header h3,
+[data-theme="dark"] .about-content h3,
+[data-theme="dark"] .timeline-card-header h3,
+html[data-theme="light"] .about-content h3,
+html[data-theme="light"] .timeline-card-header h3 {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+}
+
+.trouble-header,
+.trouble-header span,
+[data-theme="dark"] .trouble-header,
+[data-theme="dark"] .trouble-header span {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+}
+
+.brands-header-left span,
+#mobBrandsTitle,
+[data-theme="dark"] .brands-header-left span,
+[data-theme="dark"] #mobBrandsTitle {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+}
+
+.pc-master-text strong,
+[data-theme="dark"] .pc-master-text strong {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+}
+
+.pc-master-text small,
+[data-theme="dark"] .pc-master-text small {
+    color: #475569 !important;
+    font-weight: 600 !important;
+}
+
+/* 2. Kart Başlıkları ve Paragrafları */
+.service-card h3,
+.value-card h3,
+.service-card-item h3,
+[data-theme="dark"] .service-card h3,
+[data-theme="dark"] .value-card h3,
+[data-theme="dark"] .service-card-item h3,
+html[data-theme="light"] .service-card h3,
+html[data-theme="light"] .value-card h3,
+html[data-theme="light"] .service-card-item h3 {
+    color: #0f172a !important;
+    font-weight: 700 !important;
+}
+
+.service-card p,
+.value-card p,
+.service-card-item p,
+.timeline-content p,
+[data-theme="dark"] .service-card p,
+[data-theme="dark"] .value-card p,
+[data-theme="dark"] .service-card-item p,
+[data-theme="dark"] .timeline-content p,
+html[data-theme="light"] .service-card p,
+html[data-theme="light"] .value-card p,
+html[data-theme="light"] .service-card-item p {
+    color: #334155 !important;
+    font-weight: 400 !important;
+    line-height: 1.6 !important;
+}
+
+.stat-number,
+.trust-content .stat-number,
+[data-theme="dark"] .stat-number,
+[data-theme="dark"] .trust-content .stat-number,
+html[data-theme="light"] .stat-number,
+html[data-theme="light"] .trust-content .stat-number {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+}
+
+.stat-label,
+.trust-content .stat-label,
+[data-theme="dark"] .stat-label,
+[data-theme="dark"] .trust-content .stat-label,
+html[data-theme="light"] .stat-label,
+html[data-theme="light"] .trust-content .stat-label {
+    color: #475569 !important;
+    font-weight: 600 !important;
+}
+
+.cert-item span,
+[data-theme="dark"] .cert-item span {
+    color: #1e293b !important;
+    font-weight: 600 !important;
+}
+
+.hero-pc-card .pc-stat-text strong,
+[data-theme="dark"] .hero-pc-card .pc-stat-text strong {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+}
+
+.hero-pc-card .pc-stat-text span,
+[data-theme="dark"] .hero-pc-card .pc-stat-text span {
+    color: #475569 !important;
+    font-weight: 600 !important;
+}
+
+/* 3. Kart Yüzeyleri ve Çipler */
 .hero-pc-card,
 .hero-pc-trouble-card,
-.hero-brands-showcase {
+.hero-brands-showcase,
+.value-card,
+.service-card,
+.service-card-item,
+.timeline-content,
+.cert-item {
     background: rgba(255, 255, 255, 0.95) !important;
-    border: 1px solid rgba(255, 255, 255, 0.98) !important;
-    box-shadow: 0 14px 36px rgba(15, 23, 42, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid rgba(226, 232, 240, 0.85) !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+.cert-item span,
+[data-theme="dark"] .cert-item span,
+html[data-theme="light"] .cert-item span {
+    color: #0f172a !important;
+    font-weight: 700 !important;
+}
+
+.cert-item i {
+    color: #f59e0b !important;
 }
 
 .trouble-chip,
 .brand-chip {
     background: #ffffff !important;
-    border: 1px solid #e2e8f0 !important;
+    border: 1px solid #cbd5e1 !important;
     color: #1e293b !important;
-    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04) !important;
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.03) !important;
 }
 
 .trouble-chip:hover,
 .brand-chip:hover {
-    background: #f8fafc !important;
+    background: #f0f9ff !important;
     border-color: #0284c7 !important;
     color: #0284c7 !important;
 }
 
-.hero-pc-trouble-card .trouble-header,
-.hero-brands-showcase .brands-bar-title,
-.hero-pc-card .pc-stat-text strong {
-    color: #0f172a !important;
-}
-
-.hero-pc-card .pc-stat-text span {
-    color: #64748b !important;
-}
-
-/* 2. Açık Tema Başlık ve Metin Kontrastları (WCAG AA > 7:1) */
-html[data-theme="light"] .section-title,
-html[data-theme="light"] .certifications h3,
-html[data-theme="light"] .about-content h3 {
-    color: #0f172a !important;
-}
-
-html[data-theme="light"] .service-card h3,
-html[data-theme="light"] .value-card h3,
-html[data-theme="light"] .service-card-item h3 {
-    color: #0f172a !important;
-}
-
-html[data-theme="light"] .service-card p,
-html[data-theme="light"] .value-card p,
-html[data-theme="light"] .service-card-item p {
-    color: #334155 !important;
-}
-
-html[data-theme="light"] .stat-number,
-html[data-theme="light"] .trust-content .stat-number {
-    color: #1e5c32 !important;
-}
-
-html[data-theme="light"] .stat-label,
-html[data-theme="light"] .trust-content .stat-label {
-    color: #334155 !important;
-}
-
-/* 3. Etiket ve Rozet Kontrast Düzeltmeleri */
+/* 4. Etiket ve Rozet Kontrast Düzeltmeleri */
 .pc-img-tag.tag-blue {
     background: #0369a1 !important;
     color: #ffffff !important;
