@@ -4,61 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <!-- Google Analytics (GA4) - Non-blocking Resilient Loader -->
+    <!-- Analitik (GA4 + Clarity): ilk etkileşimde veya sayfa yüklendikten 6 sn sonra yüklenir; açılış hızını etkilemez -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-F9GZ1TCNVZ');
-
+        window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
         (function () {
-            var gaLoaded = false;
-            function loadGA() {
-                if (gaLoaded) return;
-                gaLoaded = true;
-                var s = document.createElement('script');
-                s.async = true;
-                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-F9GZ1TCNVZ';
-                document.head.appendChild(s);
-            }
-
-            // 1. Idle Callback with cross-browser fallback (no interaction required)
-            if ('requestIdleCallback' in window) {
-                requestIdleCallback(loadGA, { timeout: 2000 });
-            } else {
-                setTimeout(loadGA, 1500);
-            }
-
-            // 2. Early user interaction triggers immediate load
-            var events = ['scroll', 'pointerdown', 'touchstart', 'keydown'];
-            function onInteraction() {
-                loadGA();
-                events.forEach(function (e) {
-                    window.removeEventListener(e, onInteraction, { passive: true });
+            var done = false, events = ['scroll', 'pointerdown', 'touchstart', 'keydown'];
+            function load() {
+                if (done) return;
+                done = true;
+                events.forEach(function (e) { removeEventListener(e, load, { passive: true }); });
+                ['https://www.googletagmanager.com/gtag/js?id=G-F9GZ1TCNVZ', 'https://www.clarity.ms/tag/z4u0vtur8y'].forEach(function (src) {
+                    var s = document.createElement('script');
+                    s.async = true;
+                    s.src = src;
+                    document.head.appendChild(s);
                 });
             }
-            events.forEach(function (e) {
-                window.addEventListener(e, onInteraction, { passive: true, once: true });
-            });
-
-            // 3. Fallback on early page leave (bounces) so zero hits are lost
-            window.addEventListener('visibilitychange', function () {
-                if (document.visibilityState === 'hidden') loadGA();
-            }, { once: true });
-            window.addEventListener('pagehide', loadGA, { once: true });
+            events.forEach(function (e) { addEventListener(e, load, { passive: true, once: true }); });
+            addEventListener('load', function () { setTimeout(load, 6000); }, { once: true });
         })();
     </script>
 
     <link rel="icon" type="image/png" sizes="32x32" href="RESIMLER/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="RESIMLER/apple-touch-icon.png">
-
-    <!-- Güvenlik Başlıkları -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://fonts.googleapis.com https://cdnjs.cloudflare.com https://server.arcgisonline.com; frame-src 'self' https://www.google.com https://maps.google.com;">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdnjs.cloudflare.com https://www.clarity.ms https://scripts.clarity.ms; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://*.clarity.ms https://c.bing.com; frame-src https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta name="description"
         content="Hilal Teknik İletişim - Osman Tari: 0537 607 48 17. Vaillant, Bosch, Buderus, Viessmann, Ariston kombi servisi Malatya. 7/24 acil kombi tamiri, montaj, bakım hizmeti.">
     <meta name="keywords"
@@ -87,19 +61,21 @@
             }
         })();
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="image" href="RESIMLER/arka-plan-hilal-ambient.webp">
-    <link rel="stylesheet" href="style.min.css?v=20261026_opt5">
-    <link rel="stylesheet" href="icons.min.css?v=20261026_opt3">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css"></noscript>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "HVACBusiness",
       "name": "Hilal Teknik",
       "url": "https://hilalteknik.com/iletisim.html",
-      "address": {"@type": "PostalAddress", "addressLocality": "Malatya", "addressCountry": "TR"},
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Uçbağlar Mah. Sivas Cad. Kitap Sk. No:10",
+        "addressLocality": "Battalgazi",
+        "addressRegion": "Malatya",
+        "addressCountry": "TR"
+      },
+      "geo": {"@type": "GeoCoordinates", "latitude": 38.354058, "longitude": 38.330078},
+      "hasMap": "https://www.google.com/maps/place/H%C4%B0LAL+TEKN%C4%B0K+MALATYA/@38.3540535,38.330072,17z/data=!4m6!3m5!1s0x407637663564d8c9:0x3c9bfe5d3e597a!8m2!3d38.354058!4d38.330078!16s%2Fg%2F11qzr9p513?hl=tr",
       "telephone": "+90 537 607 48 17",
       "email": "osman_tari@hotmail.com",
       "areaServed": "Malatya",
@@ -112,6 +88,7 @@
       }]
     }
     </script>
+    <link rel="stylesheet" href="style.min.css?v=20261117d">
 </head>
 
 <body>
@@ -179,8 +156,7 @@
                 <div class="hero-content">
                     <h1 class="hero-title">Bizimle <span class="highlight">İletişime Geçin</span></h1>
                     <p class="hero-subtitle">Kombi arıza, bakım ve montaj talepleriniz için 7/24 hizmetinizdeyiz.</p>
-                    <a href="#iletisimBilgileri" class="hero-scroll-cue"
-                        aria-label="Harita Konumu ve İletişim Detayları">
+                    <a href="#iletisimBilgileri" class="hero-scroll-cue">
                         <span class="scroll-cue-text">Harita Konumu &amp; İletişim Detayları</span>
                         <span class="mouse-scroll-indicator" aria-hidden="true">
                             <span class="mouse-wheel"></span>
@@ -235,8 +211,7 @@
                         </div>
                         <div class="contact-details">
                             <h3>Adres</h3>
-                            <p class="contact-value cfg-address-display">Paşaköşkü Mah. İsmet Paşa Cad. No:44,
-                                Battalgazi / Malatya</p>
+                            <p class="contact-value cfg-address-display"><a href="https://www.google.com/maps/place/H%C4%B0LAL+TEKN%C4%B0K+MALATYA/@38.3540535,38.330072,17z/data=!4m6!3m5!1s0x407637663564d8c9:0x3c9bfe5d3e597a!8m2!3d38.354058!4d38.330078!16s%2Fg%2F11qzr9p513?hl=tr" target="_blank" rel="noopener noreferrer" class="contact-link" title="Google Haritalar'da aç">Uçbağlar Mah. Sivas Cad. Kitap Sk. No:10, Battalgazi / Malatya</a></p>
                             <p class="contact-desc cfg-service-areas-display">Malatya Merkez, Battalgazi, Yeşilyurt ve
                                 Tüm İlçeler</p>
                         </div>
@@ -300,16 +275,20 @@
                 <div class="map-external-info-wrapper">
                     <div class="map-external-info-card">
                         <p class="map-info-address cfg-address-display">
-                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i> Paşaköşkü Mah. İsmet Paşa Cad.
-                            No:44,
-                            Battalgazi / Malatya
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i> Uçbağlar Mah. Sivas Cad. Kitap Sk. No:10, Battalgazi / Malatya
                         </p>
                         <div class="map-info-actions">
-                            <a href="https://www.google.com/maps/dir/?api=1&destination=38.3496355,38.3183457"
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=38.354058,38.330078"
                                 target="_blank" rel="noopener noreferrer"
                                 class="btn-map-action btn-map-action--dir cfg-map-directions-link"
                                 title="Google Haritalar Yol Tarifi">
                                 <i class="fas fa-directions" aria-hidden="true"></i> Yol Tarifi Al
+                            </a>
+                            <a href="https://www.google.com/maps/place/H%C4%B0LAL+TEKN%C4%B0K+MALATYA/@38.3540535,38.330072,17z/data=!4m6!3m5!1s0x407637663564d8c9:0x3c9bfe5d3e597a!8m2!3d38.354058!4d38.330078!16s%2Fg%2F11qzr9p513?hl=tr"
+                                target="_blank" rel="noopener noreferrer"
+                                class="btn-map-action btn-map-action--dir"
+                                title="Hilal Teknik Google Haritalar sayfası">
+                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i> Google Haritalar'da Aç
                             </a>
                         </div>
                     </div>
@@ -317,11 +296,11 @@
 
                 <div class="map-card-wrapper">
                     <!-- İnteraktif Harita (Mavimsi Hilal Teknik Amblemli Özel İğne Marker) -->
-                    <div id="contactInteractiveMap" class="contact-interactive-map"
+                    <div id="contactInteractiveMap" class="contact-interactive-map" role="region"
                         aria-label="Hilal Teknik İnteraktif Konum Haritası">
                         <noscript>
                             <iframe id="noscriptContactMapIframe" class="contact-map-iframe"
-                                src="https://maps.google.com/maps?q=Pa%C5%9Fak%C3%B6%C5%9Fk%C3%BC+Mah.+%C4%B0smet+Pa%C5%9Fa+Cad.+No:44,+Battalgazi+/+Malatya&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                                src="https://maps.google.com/maps?q=38.354058,38.330078&z=17&output=embed"
                                 width="100%" height="480" style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"
                                 title="Hilal Teknik Malatya Konum ve Ulaşım Haritası">
@@ -450,90 +429,71 @@
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 
-    <!-- ==================== MERKEZİ YAPILANDIRMA VE DİNAMİK SENKRONİZASYON ==================== -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" defer></script>
-    <script src="site-config.min.js" defer></script>
-    <script src="analytics.min.js" defer></script>
+    <!-- ==================== MERKEZİ YAPILANDIRMA ==================== -->
+    <script src="site-config.min.js?v=20261117" defer></script>
+    <script src="analytics.min.js?v=20261117" defer></script>
 
-    <!-- ==================== NAVİGASYON & HARİTA SCRIPT ==================== -->
+    <!-- ==================== HARİTA SCRIPT (Leaflet yalnızca harita görünüme yaklaşınca yüklenir) ==================== -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        (function () {
+            const mapEl = document.getElementById('contactInteractiveMap');
+            if (!mapEl) return;
 
-            // ==================== HİLAL TEKNİK İNTERAKTİF HARİTA (MAVİMSİ AMBLEMLİ ÖZEL İĞNE) ====================
-            function initHilalContactMap() {
-                const mapEl = document.getElementById('contactInteractiveMap');
-                if (!mapEl) return;
+            // Hilal Teknik — Uçbağlar Mah. Sivas Cad. Kitap Sk. No:10, Battalgazi / Malatya
+            const LAT = 38.354058, LNG = 38.330078;
+            const LEAFLET = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/';
+            const LOGO = './RESIMLER/logo-hilal-amblem-sm.webp';
 
-                // Hilal Teknik Paşaköşkü Mah. Battalgazi / Malatya Koordinatları
-                let lat = 38.3496355;
-                let lng = 38.3183457;
+            function fallbackIframe() {
+                mapEl.innerHTML = '<iframe id="contactMapIframe" class="contact-map-iframe" title="Hilal Teknik Konum Haritası" ' +
+                    'src="https://maps.google.com/maps?q=' + LAT + ',' + LNG + '&z=16&output=embed" ' +
+                    'width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>';
+            }
 
-                // site-config'ten varsa koordinat ayıkla
-                if (window.HilalConfig) {
-                    const cfg = window.HilalConfig.getConfig();
-                    if (cfg && cfg.mapEmbedUrl) {
-                        const coords = parseMapCoordinates(cfg.mapEmbedUrl);
-                        if (coords) {
-                            lat = coords.lat;
-                            lng = coords.lng;
-                        }
-                    }
-                }
+            function loadLeaflet(done) {
+                const css = document.createElement('link');
+                css.rel = 'stylesheet';
+                css.href = LEAFLET + 'leaflet.css';
+                css.integrity = 'sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H';
+                css.crossOrigin = 'anonymous';
+                document.head.appendChild(css);
+                const js = document.createElement('script');
+                js.src = LEAFLET + 'leaflet.js';
+                js.integrity = 'sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH';
+                js.crossOrigin = 'anonymous';
+                js.onload = done;
+                js.onerror = fallbackIframe;
+                document.head.appendChild(js);
+            }
 
-                if (typeof L === 'undefined') {
-                    mapEl.innerHTML = `
-                        <iframe id="contactMapIframe" class="contact-map-iframe" 
-                            src="https://maps.google.com/maps?q=${lat},${lng}&t=&z=16&ie=UTF8&iwloc=&output=embed" 
-                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                    `;
-                    return;
-                }
-
+            function initMap() {
+                if (typeof L === 'undefined') return fallbackIframe();
                 try {
-                    const map = L.map('contactInteractiveMap', {
-                        center: [lat, lng],
-                        zoom: 16,
-                        scrollWheelZoom: false,
-                        zoomControl: true
-                    });
+                    const map = L.map(mapEl, { center: [LAT, LNG], zoom: 16, scrollWheelZoom: false, zoomControl: true });
 
-                    // Esri World Street Map (Yüksek hızlı, net sokak detayları, API Key GEREKTİRMEZ)
+                    // Esri World Street Map (API anahtarı gerektirmez)
                     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
                         attribution: '&copy; <a href="https://www.esri.com/" target="_blank" rel="noopener">Esri</a> &copy; OpenStreetMap',
                         maxZoom: 19
                     }).addTo(map);
 
-                    // Sitedeki kurumsal mavimsi renk (#0284c7) ve Hilal amblemli özel marker pin
-                    const hilalCustomIcon = L.divIcon({
+                    const icon = L.divIcon({
                         className: 'hilal-map-marker-container',
-                        html: `
-                            <div class="hilal-custom-pin" title="Hilal Teknik Servis Noktası">
-                                <div class="pin-pulse"></div>
-                                <div class="pin-circle">
-                                    <img src="./RESIMLER/logo-hilal-amblem.png" alt="Hilal Teknik Logo" class="pin-emblem" width="24" height="24">
-                                </div>
-                                <div class="pin-pointer"></div>
-                            </div>
-                        `,
+                        html: '<div class="hilal-custom-pin" title="Hilal Teknik Servis Noktası"><div class="pin-pulse"></div>' +
+                            '<div class="pin-circle"><img src="' + LOGO + '" alt="Hilal Teknik Logo" class="pin-emblem" width="24" height="24"></div>' +
+                            '<div class="pin-pointer"></div></div>',
                         iconSize: [48, 56],
                         iconAnchor: [24, 54],
                         popupAnchor: [0, -50]
                     });
 
-                    const marker = L.marker([lat, lng], { icon: hilalCustomIcon }).addTo(map);
-
-                    const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
-                    const popupHtml = `
-                        <div class="hilal-map-mini-popup">
-                            <img src="./RESIMLER/logo-hilal-amblem.png" alt="Hilal Teknik Logo" class="mini-popup-emblem" width="24" height="24">
-                            <span class="mini-popup-name">Hilal Teknik</span>
-                            <a href="${directionsUrl}" target="_blank" rel="noopener noreferrer" class="mini-popup-dir-btn cfg-map-directions-link">
-                                <i class="fas fa-directions" aria-hidden="true"></i> Yol Tarifi Al
-                            </a>
-                        </div>
-                    `;
-
-                    marker.bindPopup(popupHtml, {
+                    const directionsUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + LAT + ',' + LNG;
+                    L.marker([LAT, LNG], { icon: icon }).addTo(map).bindPopup(
+                        '<div class="hilal-map-mini-popup">' +
+                        '<img src="' + LOGO + '" alt="Hilal Teknik Logo" class="mini-popup-emblem" width="24" height="24">' +
+                        '<span class="mini-popup-name">Hilal Teknik</span>' +
+                        '<a href="' + directionsUrl + '" target="_blank" rel="noopener noreferrer" class="mini-popup-dir-btn">' +
+                        '<i class="fas fa-directions" aria-hidden="true"></i> Yol Tarifi Al</a></div>', {
                         maxWidth: 240,
                         minWidth: 150,
                         className: 'hilal-leaflet-popup hilal-leaflet-mini-popup',
@@ -542,29 +502,24 @@
                         offset: [0, -10]
                     }).openPopup();
 
-                    window.HilalMap = map;
-                    window.HilalMarker = marker;
-
-                    setTimeout(() => { map.invalidateSize(); }, 350);
+                    setTimeout(function () { map.invalidateSize(); }, 350);
                 } catch (e) {
-                    console.warn('Leaflet map error, falling back:', e);
+                    fallbackIframe();
                 }
             }
 
-            function parseMapCoordinates(url) {
-                if (!url) return null;
-                const pbMatch = url.match(/!2d([0-9.]+)!3d([0-9.]+)/);
-                if (pbMatch) return { lat: parseFloat(pbMatch[2]), lng: parseFloat(pbMatch[1]) };
-                const atMatch = url.match(/@([0-9.]+),([0-9.]+)/);
-                if (atMatch) return { lat: parseFloat(atMatch[1]), lng: parseFloat(atMatch[2]) };
-                const qMatch = url.match(/(?:q|ll)=([0-9.]+),([0-9.]+)/);
-                if (qMatch) return { lat: parseFloat(qMatch[1]), lng: parseFloat(qMatch[2]) };
-                return null;
+            if ('IntersectionObserver' in window) {
+                const io = new IntersectionObserver(function (entries) {
+                    if (!entries[0].isIntersecting) return;
+                    io.disconnect();
+                    loadLeaflet(initMap);
+                }, { rootMargin: '400px 0px' });
+                io.observe(mapEl);
+            } else {
+                loadLeaflet(initMap);
             }
-
-            initHilalContactMap();
-        });
+        })();
     </script>
 </body>
 
-</html>
+</html>

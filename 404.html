@@ -4,61 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <!-- Google Analytics (GA4) - Non-blocking Resilient Loader -->
+    <!-- Analitik (GA4 + Clarity): ilk etkileşimde veya sayfa yüklendikten 6 sn sonra yüklenir; açılış hızını etkilemez -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-F9GZ1TCNVZ');
-
+        window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
         (function () {
-            var gaLoaded = false;
-            function loadGA() {
-                if (gaLoaded) return;
-                gaLoaded = true;
-                var s = document.createElement('script');
-                s.async = true;
-                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-F9GZ1TCNVZ';
-                document.head.appendChild(s);
-            }
-
-            // 1. Idle Callback with cross-browser fallback (no interaction required)
-            if ('requestIdleCallback' in window) {
-                requestIdleCallback(loadGA, { timeout: 2000 });
-            } else {
-                setTimeout(loadGA, 1500);
-            }
-
-            // 2. Early user interaction triggers immediate load
-            var events = ['scroll', 'pointerdown', 'touchstart', 'keydown'];
-            function onInteraction() {
-                loadGA();
-                events.forEach(function (e) {
-                    window.removeEventListener(e, onInteraction, { passive: true });
+            var done = false, events = ['scroll', 'pointerdown', 'touchstart', 'keydown'];
+            function load() {
+                if (done) return;
+                done = true;
+                events.forEach(function (e) { removeEventListener(e, load, { passive: true }); });
+                ['https://www.googletagmanager.com/gtag/js?id=G-F9GZ1TCNVZ', 'https://www.clarity.ms/tag/z4u0vtur8y'].forEach(function (src) {
+                    var s = document.createElement('script');
+                    s.async = true;
+                    s.src = src;
+                    document.head.appendChild(s);
                 });
             }
-            events.forEach(function (e) {
-                window.addEventListener(e, onInteraction, { passive: true, once: true });
-            });
-
-            // 3. Fallback on early page leave (bounces) so zero hits are lost
-            window.addEventListener('visibilitychange', function () {
-                if (document.visibilityState === 'hidden') loadGA();
-            }, { once: true });
-            window.addEventListener('pagehide', loadGA, { once: true });
+            events.forEach(function (e) { addEventListener(e, load, { passive: true, once: true }); });
+            addEventListener('load', function () { setTimeout(load, 6000); }, { once: true });
         })();
     </script>
 
     <link rel="icon" type="image/png" sizes="32x32" href="RESIMLER/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="RESIMLER/apple-touch-icon.png">
-
-    <!-- Güvenlik Başlıkları -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://fonts.googleapis.com https://cdnjs.cloudflare.com;">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdnjs.cloudflare.com https://www.clarity.ms https://scripts.clarity.ms; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://*.clarity.ms https://c.bing.com; frame-src https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self'">
     
     <meta name="robots" content="noindex, follow">
     <meta name="description" content="Aradığınız sayfa bulunamadı - Hilal Teknik Malatya Kombi Servisi">
@@ -74,11 +48,7 @@
             }
         })();
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="image" href="RESIMLER/arka-plan-hilal-ambient.webp">
-    <link rel="stylesheet" href="style.min.css?v=20261026_opt5">
-    <link rel="stylesheet" href="icons.min.css?v=20261026_opt3">
+    <link rel="stylesheet" href="style.min.css?v=20261117d">
     <style>
         .error-page-container {
             min-height: calc(100vh - 120px);
@@ -259,8 +229,8 @@
     </aside>
 
     <!-- ==================== MERKEZİ YAPILANDIRMA VE DİNAMİK SENKRONİZASYON ==================== -->
-    <script src="site-config.min.js" defer></script>
-    <script src="analytics.min.js" defer></script>
+    <script src="site-config.min.js?v=20261117" defer></script>
+    <script src="analytics.min.js?v=20261117" defer></script>
 </body>
 
 </html>

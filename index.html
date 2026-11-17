@@ -4,61 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <!-- Google Analytics (GA4) - Non-blocking Resilient Loader -->
+    <!-- Analitik (GA4 + Clarity): ilk etkileşimde veya sayfa yüklendikten 6 sn sonra yüklenir; açılış hızını etkilemez -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-F9GZ1TCNVZ');
-
+        window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
         (function () {
-            var gaLoaded = false;
-            function loadGA() {
-                if (gaLoaded) return;
-                gaLoaded = true;
-                var s = document.createElement('script');
-                s.async = true;
-                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-F9GZ1TCNVZ';
-                document.head.appendChild(s);
-            }
-
-            // 1. Idle Callback with cross-browser fallback (no interaction required)
-            if ('requestIdleCallback' in window) {
-                requestIdleCallback(loadGA, { timeout: 7000 });
-            } else {
-                setTimeout(loadGA, 6500);
-            }
-
-            // 2. Early user interaction triggers immediate load
-            var events = ['scroll', 'pointerdown', 'touchstart', 'keydown'];
-            function onInteraction() {
-                loadGA();
-                events.forEach(function (e) {
-                    window.removeEventListener(e, onInteraction, { passive: true });
+            var done = false, events = ['scroll', 'pointerdown', 'touchstart', 'keydown'];
+            function load() {
+                if (done) return;
+                done = true;
+                events.forEach(function (e) { removeEventListener(e, load, { passive: true }); });
+                ['https://www.googletagmanager.com/gtag/js?id=G-F9GZ1TCNVZ', 'https://www.clarity.ms/tag/z4u0vtur8y'].forEach(function (src) {
+                    var s = document.createElement('script');
+                    s.async = true;
+                    s.src = src;
+                    document.head.appendChild(s);
                 });
             }
-            events.forEach(function (e) {
-                window.addEventListener(e, onInteraction, { passive: true, once: true });
-            });
-
-            // 3. Fallback on early page leave (bounces) so zero hits are lost
-            window.addEventListener('visibilitychange', function () {
-                if (document.visibilityState === 'hidden') loadGA();
-            }, { once: true });
-            window.addEventListener('pagehide', loadGA, { once: true });
+            events.forEach(function (e) { addEventListener(e, load, { passive: true, once: true }); });
+            addEventListener('load', function () { setTimeout(load, 6000); }, { once: true });
         })();
     </script>
 
     <link rel="icon" type="image/png" sizes="32x32" href="RESIMLER/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="RESIMLER/apple-touch-icon.png">
-
-    <!-- Güvenlik Başlıkları -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://fonts.googleapis.com https://cdnjs.cloudflare.com;">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdnjs.cloudflare.com https://www.clarity.ms https://scripts.clarity.ms; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://*.clarity.ms https://c.bing.com; frame-src https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta name="description"
         content="Malatya kombi servisi Hilal Teknik - Osman Tari. Vaillant, Bosch, Buderus, Viessmann, Ariston, Baxi, Demirdöküm, Protherm, Ferroli kombi montaj, bakım, onarım. 7/24 servis.">
     <meta name="keywords"
@@ -81,13 +55,7 @@
     <!-- ==================== LCP & KRİTİK GÖRSEL ÖN YÜKLEME ==================== -->
     <link rel="preload" as="image" type="image/avif"
         imagesrcset="RESIMLER/hero-petek-temizligi-600w.avif 600w, RESIMLER/hero-petek-temizligi.avif 1200w"
-        imagesizes="(max-width: 768px) 92vw, (max-width: 992px) 440px, 580px"
-        fetchpriority="high">
-
-    <!-- ==================== ERKEN BAĞLANTI (PRECONNECT) ==================== -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+        imagesizes="(max-width: 768px) 80vw, (max-width: 992px) 440px, 580px" fetchpriority="high">
 
     <!-- Tema Başlatıcı Script (FOUC Önleyici - Senkron Kalmalı) -->
     <script>
@@ -100,19 +68,6 @@
             }
         })();
     </script>
-
-    <!-- Google Fonts Inter: Non-blocking -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-        media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-    </noscript>
-
-    <!-- Yerel İkon Paketi (CDN bağımlılığı ve render-blocking kaldırıldı) -->
-    <link rel="stylesheet" href="icons.min.css?v=20261030_perf">
-
-    <!-- Ana Stil Dosyası -->
-    <link rel="stylesheet" href="style.min.css?v=20261030_perf">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -121,11 +76,15 @@
       "url": "https://hilalteknik.com/",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Malatya",
+        "streetAddress": "Uçbağlar Mah. Sivas Cad. Kitap Sk. No:10",
+        "addressLocality": "Battalgazi",
+        "addressRegion": "Malatya",
         "addressCountry": "TR"
       },
+      "geo": {"@type": "GeoCoordinates", "latitude": 38.354058, "longitude": 38.330078},
+      "hasMap": "https://www.google.com/maps/place/H%C4%B0LAL+TEKN%C4%B0K+MALATYA/@38.3540535,38.330072,17z/data=!4m6!3m5!1s0x407637663564d8c9:0x3c9bfe5d3e597a!8m2!3d38.354058!4d38.330078!16s%2Fg%2F11qzr9p513?hl=tr",
       "telephone": "+90 537 607 48 17",
-      "email": "info@hilalteknik.com",
+      "email": "osman_tari@hotmail.com",
       "areaServed": "Malatya",
       "image": "RESIMLER/sosyal-paylasim-logo.png",
       "priceRange": "₺₺",
@@ -137,6 +96,9 @@
       ]
     }
     </script>
+    <!-- Ana sayfada yazı fontu önden yüklenir (mobilde ikinci yerleşim hesabını önler) -->
+    <link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin.woff2" crossorigin>
+    <link rel="stylesheet" href="style.min.css?v=20261117d">
 </head>
 
 <body>
@@ -233,14 +195,15 @@
 
                         <!-- Buton Grubu (Desktop'ta yan yana, Mobilde şık alt alta) -->
                         <div class="hero-cta-wrapper hero-unified-cta">
-                            <a href="javascript:void(0)" class="btn hero-primary-cta js-open-quote" id="heroQuoteBtn"
+                            <a href="#quoteDrawer" class="btn hero-primary-cta js-open-quote" id="heroQuoteBtn"
                                 role="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="quoteDrawer"
                                 data-open-drawer="quote">
                                 <i class="fas fa-calendar-alt"></i>
                                 <span>Randevu Al</span>
                                 <i class="fas fa-arrow-right"></i>
                             </a>
-                            <a href="hizmetlerimiz.html" class="btn hero-mob-secondary-btn hero-pc-secondary-btn" id="heroServicesBtn">
+                            <a href="hizmetlerimiz.html" class="btn hero-mob-secondary-btn hero-pc-secondary-btn"
+                                id="heroServicesBtn">
                                 <i class="fas fa-tools"></i>
                                 <span>Hizmetlerimizi İncele</span>
                                 <i class="fas fa-arrow-right mob-only-arrow"></i>
@@ -254,16 +217,20 @@
                                 <span>Kombinizde Hangi Sorun Var?</span>
                             </div>
                             <div class="trouble-chips-wrap">
-                                <button type="button" class="trouble-chip js-trouble-click js-open-quote" data-issue="Sıcak Su Gelmiyor">
+                                <button type="button" class="trouble-chip js-trouble-click js-open-quote"
+                                    data-issue="Sıcak Su Gelmiyor">
                                     <i class="fas fa-tint text-primary"></i> Sıcak Su Gelmiyor
                                 </button>
-                                <button type="button" class="trouble-chip js-trouble-click js-open-quote" data-issue="Petekler Isınmıyor">
+                                <button type="button" class="trouble-chip js-trouble-click js-open-quote"
+                                    data-issue="Petekler Isınmıyor">
                                     <i class="fas fa-fire text-danger"></i> Petekler Isınmıyor
                                 </button>
-                                <button type="button" class="trouble-chip js-trouble-click js-open-quote" data-issue="Su Basıncı Düşüyor">
+                                <button type="button" class="trouble-chip js-trouble-click js-open-quote"
+                                    data-issue="Su Basıncı Düşüyor">
                                     <i class="fas fa-info-circle text-info"></i> Su Basıncı Düşüyor
                                 </button>
-                                <button type="button" class="trouble-chip js-trouble-click js-open-quote" data-issue="Arıza Kodu Yanıyor">
+                                <button type="button" class="trouble-chip js-trouble-click js-open-quote"
+                                    data-issue="Arıza Kodu Yanıyor">
                                     <i class="fas fa-exclamation-triangle text-warning"></i> Arıza Kodu Yanıyor
                                 </button>
                             </div>
@@ -284,11 +251,15 @@
                                 <!-- 1. Görsel (Petek Temizlik - Ana LCP Görseli) -->
                                 <div class="pc-img-box pc-img-box--main">
                                     <picture>
-                                        <source type="image/avif" srcset="RESIMLER/hero-petek-temizligi-600w.avif 600w, RESIMLER/hero-petek-temizligi.avif 1200w" sizes="(max-width: 768px) 92vw, (max-width: 992px) 440px, 580px">
-                                        <source type="image/webp" srcset="RESIMLER/hero-petek-temizligi-600w.webp 600w, RESIMLER/hero-petek-temizligi-800w.webp 800w, RESIMLER/hero-petek-temizligi.webp 1200w" sizes="(max-width: 768px) 92vw, (max-width: 992px) 440px, 580px">
+                                        <source type="image/avif"
+                                            srcset="RESIMLER/hero-petek-temizligi-600w.avif 600w, RESIMLER/hero-petek-temizligi.avif 1200w"
+                                            sizes="(max-width: 768px) 80vw, (max-width: 992px) 440px, 580px">
+                                        <source type="image/webp"
+                                            srcset="RESIMLER/hero-petek-temizligi-600w.webp 600w, RESIMLER/hero-petek-temizligi-800w.webp 800w, RESIMLER/hero-petek-temizligi.webp 1200w"
+                                            sizes="(max-width: 768px) 80vw, (max-width: 992px) 440px, 580px">
                                         <img src="RESIMLER/hero-petek-temizligi.jpg"
-                                            alt="Malatya Kalorifer Petek Temizlik ve Tesisat" width="580"
-                                            height="380" loading="eager" fetchpriority="high" decoding="async">
+                                            alt="Malatya Kalorifer Petek Temizlik ve Tesisat" width="580" height="380"
+                                            loading="eager" fetchpriority="high" decoding="async">
                                     </picture>
                                     <div class="pc-img-tag tag-navy">
                                         <i class="fas fa-fire"></i>
@@ -299,8 +270,12 @@
                                 <!-- 2. Görsel (Kombi Bakım Onarım - İkincil Görsel) -->
                                 <div class="pc-img-box pc-img-box--overlap">
                                     <picture>
-                                        <source type="image/avif" srcset="RESIMLER/hero-kombi-bakim-onarim-500w.avif 500w, RESIMLER/hero-kombi-bakim-onarim.avif 896w" sizes="(max-width: 768px) 65vw, (max-width: 992px) 360px, 460px">
-                                        <source type="image/webp" srcset="RESIMLER/hero-kombi-bakim-onarim-500w.webp 500w, RESIMLER/hero-kombi-bakim-onarim-800w.webp 800w, RESIMLER/hero-kombi-bakim-onarim.webp 896w" sizes="(max-width: 768px) 65vw, (max-width: 992px) 360px, 460px">
+                                        <source type="image/avif"
+                                            srcset="RESIMLER/hero-kombi-bakim-onarim-500w.avif 500w, RESIMLER/hero-kombi-bakim-onarim.avif 896w"
+                                            sizes="(max-width: 768px) 60vw, (max-width: 992px) 360px, 460px">
+                                        <source type="image/webp"
+                                            srcset="RESIMLER/hero-kombi-bakim-onarim-500w.webp 500w, RESIMLER/hero-kombi-bakim-onarim-800w.webp 800w, RESIMLER/hero-kombi-bakim-onarim.webp 896w"
+                                            sizes="(max-width: 768px) 60vw, (max-width: 992px) 360px, 460px">
                                         <img src="RESIMLER/hero-kombi-bakim-onarim.jpg"
                                             alt="Malatya Kombi Bakım Onarım ve Servisi" width="460" height="320"
                                             loading="eager" decoding="async">
@@ -369,9 +344,10 @@
                 </div>
 
                 <!-- Alt Bölüm: Hizmet Verdiğimiz Markalar Kartı (Genişletilebilir) -->
-                <div class="hero-brands-showcase js-brands-card" id="mobBrandsCard" role="region" aria-labelledby="mobBrandsTitle">
-                    <div class="brands-header" id="mobBrandsToggle" role="button" tabindex="0"
-                        aria-expanded="false" aria-controls="mobBrandsPills" aria-label="Markalar listesini aç veya kapat">
+                <div class="hero-brands-showcase js-brands-card" id="mobBrandsCard" role="region"
+                    aria-labelledby="mobBrandsTitle">
+                    <div class="brands-header" id="mobBrandsToggle" role="button" tabindex="0" aria-expanded="false"
+                        aria-controls="mobBrandsPills">
                         <div class="brands-header-left">
                             <span class="brands-header-icon"><i class="fas fa-wrench" aria-hidden="true"></i></span>
                             <span id="mobBrandsTitle">Hizmet Verdiğimiz Markalar</span>
@@ -418,7 +394,7 @@
                             <i class="fas fa-leaf"></i>
                         </div>
                         <h3>Hızlı Bakım Ve Onarım</h3>
-                        <p>Doğru bakım, onarım ve orjinal yedek parça ile ile %30'a kadar enerji tasarrufu sağlıyoruz.
+                        <p>Doğru bakım, onarım ve orijinal yedek parça ile %30'a kadar enerji tasarrufu sağlıyoruz.
                         </p>
                     </div>
                     <div class="value-card">
@@ -486,7 +462,7 @@
                             <div class="stat-label">Müşteri Puanı</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number">5000+</div>
+                            <div class="stat-number">1000+</div>
                             <div class="stat-label">Mutlu Müşteri</div>
                         </div>
                         <div class="stat-item">
@@ -700,96 +676,60 @@
 
     <!-- ==================== JAVASCRIPT ==================== -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        (function () {
+            // ==================== RANDEVU ÇEKMECESİ ====================
             const drawer = document.getElementById('quoteDrawer');
-            const drawerClose = document.getElementById('drawerClose');
             const heroQuoteBtn = document.getElementById('heroQuoteBtn');
-            function openDrawer() {
+            let lastFocus = null;
+
+            function setDrawer(open) {
                 if (!drawer) return;
-                drawer.removeAttribute('inert');
-                drawer.classList.add('open');
-                drawer.setAttribute('aria-hidden', 'false');
-                heroQuoteBtn?.setAttribute('aria-expanded', 'true');
-                document.body.style.overflow = 'hidden';
+                drawer.classList.toggle('open', open);
+                drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+                drawer.toggleAttribute('inert', !open);
+                if (heroQuoteBtn) heroQuoteBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+                document.body.style.overflow = open ? 'hidden' : '';
+                if (open) {
+                    lastFocus = document.activeElement;
+                    // visibility geçişi başladıktan sonra odaklanılabilir
+                    setTimeout(function () { document.getElementById('drawerClose').focus({ preventScroll: true }); }, 60);
+                } else if (lastFocus) {
+                    lastFocus.focus({ preventScroll: true });
+                }
             }
 
-            function closeDrawer() {
-                if (!drawer) return;
-                drawer.classList.remove('open');
-                drawer.setAttribute('aria-hidden', 'true');
-                drawer.setAttribute('inert', '');
-                heroQuoteBtn?.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
-            }
-
-            window.openQuoteDrawer = openDrawer;
-            window.closeQuoteDrawer = closeDrawer;
-
-            // Teklif Alma butonları tetikleyici
-            document.querySelectorAll('.js-open-quote, .call-btn--quote, [data-open-drawer="quote"]').forEach(el => {
-                el.addEventListener('click', function (e) {
+            document.addEventListener('click', function (e) {
+                if (e.target.closest('.js-open-quote')) {
                     e.preventDefault();
-                    e.stopPropagation();
-                    openDrawer();
-                });
-            });
-
-            drawerClose?.addEventListener('click', function (e) {
-                e.preventDefault();
-                e.stopPropagation();
-                closeDrawer();
-            });
-
-            drawer?.addEventListener('click', function (e) {
-                if (e.target === drawer) closeDrawer();
+                    setDrawer(true);
+                } else if (e.target.closest('#drawerClose') || e.target === drawer) {
+                    e.preventDefault();
+                    setDrawer(false);
+                }
             });
 
             document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && drawer?.classList.contains('open')) {
-                    closeDrawer();
-                }
+                if (e.key === 'Escape' && drawer && drawer.classList.contains('open')) setDrawer(false);
             });
 
-            // ==================== HİZMET VERDİĞİMİZ MARKALAR KART GENİŞLEME / DARALMA ====================
-            (function () {
-                const card = document.getElementById('mobBrandsCard');
-                const toggleHeader = document.getElementById('mobBrandsToggle');
-                if (!card || !toggleHeader) return;
+            // ==================== HİZMET VERDİĞİMİZ MARKALAR KARTI ====================
+            const card = document.getElementById('mobBrandsCard');
+            const toggle = document.getElementById('mobBrandsToggle');
+            if (!card || !toggle) return;
+            const badgeText = card.querySelector('.expand-text');
 
-                let isToggling = false;
+            function toggleBrands(e) {
+                e.preventDefault();
+                const expanded = card.classList.toggle('is-expanded');
+                toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                if (badgeText) badgeText.textContent = expanded ? 'Daha Az Göster' : '+12 Marka';
+            }
 
-                function toggleBrands(e) {
-                    if (e) {
-                        // Marka çipine tıklanmışsa kartı kapatma
-                        if (e.target && (e.target.closest('a') || e.target.closest('.brand-chip'))) return;
-                        e.preventDefault();
-                    }
-
-                    // Hızlı hızlı ardışık tetiklenmeyi engelleyen 300ms kilit (debounce)
-                    if (isToggling) return;
-                    isToggling = true;
-                    setTimeout(() => {
-                        isToggling = false;
-                    }, 300);
-
-                    const isExpanded = card.classList.toggle('is-expanded');
-                    card.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
-                    toggleHeader.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
-
-                    const badgeText = card.querySelector('.expand-text');
-                    if (badgeText) {
-                        badgeText.textContent = isExpanded ? 'Daha Az Göster' : '+12 Marka';
-                    }
-                }
-
-                toggleHeader.addEventListener('click', toggleBrands);
-                toggleHeader.addEventListener('keydown', function (e) {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        toggleBrands(e);
-                    }
-                });
-            })();
-        });
+            toggle.addEventListener('click', toggleBrands);
+            toggle.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') toggleBrands(e);
+            });
+        })();
     </script>
 
     <!-- ==================== SAĞ ALT SABİT İLETİŞİM & WHATSAPP BUTONLARI ==================== -->
@@ -812,8 +752,8 @@
     </button>
 
     <!-- ==================== MERKEZİ YAPILANDIRMA VE DİNAMİK SENKRONİZASYON ==================== -->
-    <script src="site-config.min.js" defer></script>
-    <script src="analytics.min.js" defer></script>
+    <script src="site-config.min.js?v=20261117" defer></script>
+    <script src="analytics.min.js?v=20261117" defer></script>
 </body>
 
-</html>
+</html>
